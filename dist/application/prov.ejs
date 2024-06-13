@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Tareas, Citas, Eventos y Disponibilidad</title>
+    <link href='https://cdn.jsdelivr.net/npm/fullcalendar@5.9.0/main.min.css' rel='stylesheet' />
+    <script src='https://cdn.jsdelivr.net/npm/fullcalendar@5.9.0/main.min.js'></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+</head>
+<body>
+    <h1>Lista de Tareas</h1>
+    <ul id="tareas-list"></ul>
+
+    <h1>Lista de Citas</h1>
+    <ul id="citas-list"></ul>
+
+    <h1>Lista de Eventos</h1>
+    <ul id="eventos-list"></ul>
+
+    <h1>Calendario de Disponibilidad</h1>
+    <div id="calendar"></div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="eventModal" tabindex="-1" aria-labelledby="eventModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="eventModalLabel">Detalle de la Cita</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p><strong>Nombre:</strong> <span id="modal-nombre"></span></p>
+                    <p><strong>Descripción:</strong> <span id="modal-descripcion"></span></p>
+                    <p><strong>Fecha:</strong> <span id="modal-fecha"></span></p>
+                    <p><strong>Hora de Inicio:</strong> <span id="modal-hora-inicio"></span></p>
+                    <p><strong>Hora de Fin:</strong> <span id="modal-hora-fin"></span></p>
+                    <p><strong>Cliente:</strong> <span id="modal-cliente"></span></p>
+                    <p><strong>Contacto Cliente:</strong> <span id="modal-contacto-cliente"></span></p>
+                    <p><strong>Usuario:</strong> <span id="modal-usuario"></span></p>
+                    <p><strong>Contacto Usuario:</strong> <span id="modal-contacto-usuario"></span></p>
+                    <p><strong>Enlace:</strong> <a id="modal-enlace" href="#" target="_blank">Enlace</a></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        const socket = io();
+
+        // Función para formatear la fecha
+        const formatDate = (dateString) => {
+            const options = { year: 'numeric', month: 'long', day: 'numeric' };
+            return new Date(dateString).toLocaleDateString('es-MX', options);
+        };
+
+        const renderTareas = (tareas) => {
+            const tareasList = document.getElementById('tareas-list');
+            tareasList.innerHTML = '';
+            tareas.forEach(tarea => {
+                const usuario = tarea.Usuario ? `${tarea.Usuario.nombre} ${tarea.Usuario.apellidoPaterno} ${tarea.Usuario.apellidoMaterno}` : 'Desconocido';
+                const rol = tarea.Usuario && tarea.Usuario.Rol ? tarea.Usuario.Rol.tipo : 'Desconocido';
+                const contacto = tarea.Usuario ? `${tarea.Usuario.telefono}, ${tarea.Usuario.correoElectronico}` : 'Desconocido';
+                const li = document.createElement('li');
+                li.setAttribute('data-id', tarea.id);
+                li.innerHTML = `
+                    <strong>${tarea.nombre}</strong> - ${tarea.descripcion} - ${tarea.estado} - Fecha de vencimiento: ${formatDate(tarea.fechaVencimiento)}<br>
+                    Creado: ${formatDate(tarea.createdAt)}<br>
+                    Actualizado: ${formatDate(tarea.updatedAt)}<br>
+                    Asignado a: ${usuario}<br>
+                    Rol: ${rol}<br>
+                    Contacto: ${contacto}
+                `;
+                tareasList.appendChild(li);
+            });
+        };
+
+        const renderCitas = (citas) => {
+            const citasList = document.getElementById('citas-list');
+            citasList.innerHTML = '';
+            citas.forEach(cita => {
+                const usuario = cita.Usuario ? `${cita.Usuario.nombre} ${cita.Usuario.apellidoPaterno} ${cita.Usuario.apellidoMaterno}` : 'Desconocido';
+                const rol = cita.Usuario && cita.Usuario.Rol ? cita.Usuario.Rol.tipo : 'Desconocido';
+                const contactoUsuario = cita.Usuario ? `${cita.Usuario.telefono}, ${cita.Usuario.correoElectronico}` : 'Desconocido';
+                const cliente = cita.Cliente ? `${cita.Cliente.nombre} ${cita.Cliente.apellidoPaterno} ${cita.Cliente.apellidoMaterno}` : 'Desconocido';
+                const contactoCliente = cita.Cliente ? `${cita.Cliente.telefono}, ${cita.Cliente.correoElectronico}` : 'Desconocido';
+                const li = document.createElement('li');
+                li.setAttribute('data-id', cita.id);
+                li.classList.add('list-group-item');
+                li.innerHTML = `
+                    <strong>${cita.nombre}</strong> - ${cita.descripcion} - ${cita.estado} - Fecha: ${formatDate(cita.fecha)}<br>
+                    Hora: ${new Date(cita.horaInicio).toLocaleTimeString('es-MX')} - ${new Date(cita.horaFin).toLocaleTimeString('es-MX')}<br>
+                    Lugar: ${cita.lugar}<br>
+                    Enlace: <a href="${cita.enlace}" target="_blank">${cita.enlace}</a><br>
+                    Documentos: ${cita.documentos}<br>
+                    Asignado a: ${usuario}<br>
+                    Rol: ${rol}<br>
+                    Cliente: ${cliente}<br>
+                    Contacto Cliente: ${contactoCliente}
+                `;
+                citasList.appendChild(li);
+            });
+        };
+
+        const renderEventos = (eventos) => {
+            const eventosList = document.getElementById('eventos-list');
+            eventosList.innerHTML = '';
+            eventos.forEach(evento => {
+                const creador = evento.Usuario ? `${evento.Usuario.nombre} ${evento.Usuario.apellidoPaterno} ${evento.Usuario.apellidoMaterno}` : 'Desconocido';
+                const contactoCreador = evento.Usuario ? `${evento.Usuario.telefono}, ${evento.Usuario.correoElectronico}` : 'Desconocido';
+                const li = document.createElement('li');
+                li.setAttribute('data-id', evento.id);
+                li.classList.add('list-group-item');
+                li.innerHTML = `
+                    <strong>${evento.titulo}</strong> - ${evento.descripcion} - ${evento.estado} - Fecha de inicio: ${formatDate(evento.fechaInicio)}<br>
+                    Fecha de fin: ${formatDate(evento.fechaFin)}<br>
+                    Categoría: ${evento.categoria}<br>
+                    Tipo: ${evento.tipo}<br>
+                    Creado por: ${creador}<br>
+                    Contacto: ${contactoCreador}
+                `;
+                eventosList.appendChild(li);
+            });
+        };
+
+        // Inicializar el calendario
+        document.addEventListener('DOMContentLoaded', function() {
+            const calendarEl = document.getElementById('calendar');
+
+            const calendar = new FullCalendar.Calendar(calendarEl, {
+                initialView: 'dayGridMonth',
+                events: [],
+                eventClick: function(info) {
+                    $('#modal-nombre').text(info.event.title);
+                    $('#modal-descripcion').text(info.event.extendedProps.descripcion);
+                    $('#modal-fecha').text(formatDate(info.event.start));
+                    $('#modal-hora-inicio').text(info.event.start.toLocaleTimeString('es-MX'));
+                    $('#modal-hora-fin').text(info.event.end.toLocaleTimeString('es-MX'));
+                    $('#modal-cliente').text(info.event.extendedProps.cliente);
+                    $('#modal-contacto-cliente').text(info.event.extendedProps.contactoCliente);
+                    $('#modal-usuario').text(info.event.extendedProps.usuario);
+                    $('#modal-contacto-usuario').text(info.event.extendedProps.contactoUsuario);
+                    $('#modal-enlace').attr('href', info.event.extendedProps.enlace);
+                    $('#eventModal').modal('show');
+                }
+            });
+
+            calendar.render();
+
+            const convertCitasToEvents = (citas) => {
+                return citas.map(cita => ({
+                    id: cita.id,
+                    title: cita.nombre,
+                    start: cita.horaInicio,
+                    end: cita.horaFin,
+                    extendedProps: {
+                        descripcion: cita.descripcion,
+                        cliente: cita.Cliente ? `${cita.Cliente.nombre} ${cita.Cliente.apellidoPaterno} ${cita.Cliente.apellidoMaterno}` : 'Desconocido',
+                        contactoCliente: cita.Cliente ? `${cita.Cliente.telefono}, ${cita.Cliente.correoElectronico}` : 'Desconocido',
+                        usuario: cita.Usuario ? `${cita.Usuario.nombre} ${cita.Usuario.apellidoPaterno} ${cita.Usuario.apellidoMaterno}` : 'Desconocido',
+                        contactoUsuario: cita.Usuario ? `${cita.Usuario.telefono}, ${cita.Usuario.correoElectronico}` : 'Desconocido',
+                        enlace: cita.enlace
+                    }
+                }));
+            };
+
+            // Obtener y renderizar citas
+            fetch('/citas')
+                .then(response => response.json())
+                .then(citas => {
+                    const events = convertCitasToEvents(citas);
+                    calendar.addEventSource(events);
+                    renderCitas(citas); // Asegurarse de renderizar la lista de citas
+                })
+                .catch(error => {
+                    console.error('Error al cargar las citas:', error);
+                });
+
+            socket.on('citaCreada', (cita) => {
+                const event = {
+                    id: cita.id,
+                    title: cita.nombre,
+                    start: cita.horaInicio,
+                    end: cita.horaFin,
+                    extendedProps: {
+                        descripcion: cita.descripcion,
+                        cliente: cita.Cliente ? `${cita.Cliente.nombre} ${cita.Cliente.apellidoPaterno} ${cita.Cliente.apellidoMaterno}` : 'Desconocido',
+                        contactoCliente: cita.Cliente ? `${cita.Cliente.telefono}, ${cita.Cliente.correoElectronico}` : 'Desconocido',
+                        usuario: cita.Usuario ? `${cita.Usuario.nombre} ${cita.Usuario.apellidoPaterno} ${cita.Usuario.apellidoMaterno}` : 'Desconocido',
+                        contactoUsuario: cita.Usuario ? `${cita.Usuario.telefono}, ${cita.Usuario.correoElectronico}` : 'Desconocido',
+                        enlace: cita.enlace
+                    }
+                };
+                calendar.addEvent(event);
+
+                // Agregar cita a la lista de citas
+                const citasList = document.getElementById('citas-list');
+                const usuario = cita.Usuario ? `${cita.Usuario.nombre} ${cita.Usuario.apellidoPaterno} ${cita.Usuario.apellidoMaterno}` : 'Desconocido';
+                const rol = cita.Usuario && cita.Usuario.Rol ? cita.Usuario.Rol.tipo : 'Desconocido';
+                const contactoUsuario = cita.Usuario ? `${cita.Usuario.telefono}, ${cita.Usuario.correoElectronico}` : 'Desconocido';
+                const cliente = cita.Cliente ? `${cita.Cliente.nombre} ${cita.Cliente.apellidoPaterno} ${cita.Cliente.apellidoMaterno}` : 'Desconocido';
+                const contactoCliente = cita.Cliente ? `${cita.Cliente.telefono}, ${cita.Cliente.correoElectronico}` : 'Desconocido';
+                const li = document.createElement('li');
+                li.setAttribute('data-id', cita.id);
+                li.classList.add('list-group-item');
+                li.innerHTML = `
+                    <strong>${cita.nombre}</strong> - ${cita.descripcion} - ${cita.estado} - Fecha: ${formatDate(cita.fecha)}<br>
+                    Hora: ${new Date(cita.horaInicio).toLocaleTimeString('es-MX')} - ${new Date(cita.horaFin).toLocaleTimeString('es-MX')}<br>
+                    Lugar: ${cita.lugar}<br>
+                    Enlace: <a href="${cita.enlace}" target="_blank">${cita.enlace}</a><br>
+                    Documentos: ${cita.documentos}<br>
+                    Asignado a: ${usuario}<br>
+                    Rol: ${rol}<br>
+                    Cliente: ${cliente}<br>
+                    Contacto Cliente: ${contactoCliente}
+                `;
+                citasList.appendChild(li);
+            });
+
+            socket.on('citaActualizada', (cita) => {
+                const event = calendar.getEventById(cita.id);
+                if (event) {
+                    event.setProp('title', cita.nombre);
+                    event.setStart(cita.horaInicio);
+                    event.setEnd(cita.horaFin);
+                    event.setExtendedProp('descripcion', cita.descripcion);
+                    event.setExtendedProp('cliente', cita.Cliente ? `${cita.Cliente.nombre} ${cita.Cliente.apellidoPaterno} ${cita.Cliente.apellidoMaterno}` : 'Desconocido');
+                    event.setExtendedProp('contactoCliente', cita.Cliente ? `${cita.Cliente.telefono}, ${cita.Cliente.correoElectronico}` : 'Desconocido');
+                    event.setExtendedProp('usuario', cita.Usuario ? `${cita.Usuario.nombre} ${cita.Usuario.apellidoPaterno} ${cita.Usuario.apellidoMaterno}` : 'Desconocido');
+                    event.setExtendedProp('contactoUsuario', cita.Usuario ? `${cita.Usuario.telefono}, ${cita.Usuario.correoElectronico}` : 'Desconocido');
+                    event.setExtendedProp('enlace', cita.enlace);
+                }
+
+                // Actualizar la lista de citas
+                const citasList = document.getElementById('citas-list');
+                const items = citasList.getElementsByTagName('li');
+                for (let item of items) {
+                    if (item.getAttribute('data-id') === cita.id) {
+                        const usuario = cita.Usuario ? `${cita.Usuario.nombre} ${cita.Usuario.apellidoPaterno} ${cita.Usuario.apellidoMaterno}` : 'Desconocido';
+                        const rol = cita.Usuario && cita.Usuario.Rol ? cita.Usuario.Rol.tipo : 'Desconocido';
+                        const contactoUsuario = cita.Usuario ? `${cita.Usuario.telefono}, ${cita.Usuario.correoElectronico}` : 'Desconocido';
+                        const cliente = cita.Cliente ? `${cita.Cliente.nombre} ${cita.Cliente.apellidoPaterno} ${cita.Cliente.apellidoMaterno}` : 'Desconocido';
+                        const contactoCliente = cita.Cliente ? `${cita.Cliente.telefono}, ${cita.Cliente.correoElectronico}` : 'Desconocido';
+                        item.innerHTML = `
+                            <strong>${cita.nombre}</strong> - ${cita.descripcion} - ${cita.estado} - Fecha: ${formatDate(cita.fecha)}<br>
+                            Hora: ${new Date(cita.horaInicio).toLocaleTimeString('es-MX')} - ${new Date(cita.horaFin).toLocaleTimeString('es-MX')}<br>
+                            Lugar: ${cita.lugar}<br>
+                            Enlace: <a href="${cita.enlace}" target="_blank">${cita.enlace}</a><br>
+                            Documentos: ${cita.documentos}<br>
+                            Asignado a: ${usuario}<br>
+                            Rol: ${rol}<br>
+                            Cliente: ${cliente}<br>
+                            Contacto Cliente: ${contactoCliente}
+                        `;
+                        break;
+                    }
+                }
+            });
+
+            socket.on('citaEliminada', ({ id }) => {
+                const event = calendar.getEventById(id);
+                if (event) {
+                    event.remove();
+                }
+
+                // Eliminar de la lista de citas
+                const citasList = document.getElementById('citas-list');
+                const items = citasList.getElementsByTagName('li');
+                for (let item of items) {
+                    if (item.getAttribute('data-id') === id) {
+                        citasList.removeChild(item);
+                        break;
+                    }
+                }
+            });
+        });
+
+        socket.on('connect', () => {
+            console.log('Conectado al servidor con ID:', socket.id);
+        });
+
+        socket.on('disconnect', () => {
+            console.log('Desconectado del servidor');
+        });
+
+        socket.on('tareas', (tareas) => {
+            console.log('Tareas recibidas:', tareas);
+            renderTareas(tareas);
+        });
+
+        socket.on('citas', (citas) => {
+            console.log('Citas recibidas:', citas);
+            const events = convertCitasToEvents(citas);
+            calendar.addEventSource(events);
+            renderCitas(citas);
+        });
+
+        socket.on('eventos', (eventos) => {
+            console.log('Eventos recibidos:', eventos);
+            renderEventos(eventos);
+        });
+
+        socket.on('tareaCreada', (tarea) => {
+            const tareasList = document.getElementById('tareas-list');
+            const usuario = tarea.Usuario ? `${tarea.Usuario.nombre} ${tarea.Usuario.apellidoPaterno} ${tarea.Usuario.apellidoMaterno}` : 'Desconocido';
+            const rol = tarea.Usuario && tarea.Usuario.Rol ? tarea.Usuario.Rol.tipo : 'Desconocido';
+            const contacto = tarea.Usuario ? `${tarea.Usuario.telefono}, ${tarea.Usuario.correoElectronico}` : 'Desconocido';
+            const li = document.createElement('li');
+            li.setAttribute('data-id', tarea.id);
+            li.innerHTML = `
+                <strong>${tarea.nombre}</strong> - ${tarea.descripcion} - ${tarea.estado} - Fecha de vencimiento: ${formatDate(tarea.fechaVencimiento)}<br>
+                Creado: ${formatDate(tarea.createdAt)}<br>
+                Actualizado: ${formatDate(tarea.updatedAt)}<br>
+                Asignado a: ${usuario}<br>
+                Rol: ${rol}<br>
+                Contacto: ${contacto}
+            `;
+            tareasList.appendChild(li);
+        });
+
+        socket.on('tareaActualizada', (tarea) => {
+            const tareasList = document.getElementById('tareas-list');
+            const items = tareasList.getElementsByTagName('li');
+            for (let item of items) {
+                if (item.getAttribute('data-id') === tarea.id) {
+                    const usuario = tarea.Usuario ? `${tarea.Usuario.nombre} ${tarea.Usuario.apellidoPaterno} ${tarea.Usuario.apellidoMaterno}` : 'Desconocido';
+                    const rol = tarea.Usuario && tarea.Usuario.Rol ? tarea.Usuario.Rol.tipo : 'Desconocido';
+                    const contacto = tarea.Usuario ? `${tarea.Usuario.telefono}, ${tarea.Usuario.correoElectronico}` : 'Desconocido';
+                    item.innerHTML = `
+                        <strong>${tarea.nombre}</strong> - ${tarea.descripcion} - ${tarea.estado} - Fecha de vencimiento: ${formatDate(tarea.fechaVencimiento)}<br>
+                        Creado: ${formatDate(tarea.createdAt)}<br>
+                        Actualizado: ${formatDate(tarea.updatedAt)}<br>
+                        Asignado a: ${usuario}<br>
+                        Rol: ${rol}<br>
+                        Contacto: ${contacto}
+                    `;
+                    break;
+                }
+            }
+        });
+
+        socket.on('estadoTareaActualizado', (tarea) => {
+            const tareasList = document.getElementById('tareas-list');
+            const items = tareasList.getElementsByTagName('li');
+            for (let item of items) {
+                if (item.getAttribute('data-id') === tarea.id) {
+                    const usuario = tarea.Usuario ? `${tarea.Usuario.nombre} ${tarea.Usuario.apellidoPaterno} ${tarea.Usuario.apellidoMaterno}` : 'Desconocido';
+                    const rol = tarea.Usuario && tarea.Usuario.Rol ? tarea.Usuario.Rol.tipo : 'Desconocido';
+                    const contacto = tarea.Usuario ? `${tarea.Usuario.telefono}, ${tarea.Usuario.correoElectronico}` : 'Desconocido';
+                    item.innerHTML = `
+                        <strong>${tarea.nombre}</strong> - ${tarea.descripcion} - ${tarea.estado} - Fecha de vencimiento: ${formatDate(tarea.fechaVencimiento)}<br>
+                        Creado: ${formatDate(tarea.createdAt)}<br>
+                        Actualizado: ${formatDate(tarea.updatedAt)}<br>
+                        Asignado a: ${usuario}<br>
+                        Rol: ${rol}<br>
+                        Contacto: ${contacto}
+                    `;
+                    break;
+                }
+            }
+        });
+
+        socket.on('tareaEliminada', ({ id }) => {
+            const tareasList = document.getElementById('tareas-list');
+            const items = tareasList.getElementsByTagName('li');
+            for (let item of items) {
+                if (item.getAttribute('data-id') === id) {
+                    tareasList.removeChild(item);
+                    break;
+                }
+            }
+        });
+
+        socket.on('eventoCreado', (evento) => {
+            const eventosList = document.getElementById('eventos-list');
+            const creador = evento.Usuario ? `${evento.Usuario.nombre} ${evento.Usuario.apellidoPaterno} ${evento.Usuario.apellidoMaterno}` : 'Desconocido';
+            const contactoCreador = evento.Usuario ? `${evento.Usuario.telefono}, ${evento.Usuario.correoElectronico}` : 'Desconocido';
+            const li = document.createElement('li');
+            li.setAttribute('data-id', evento.id);
+            li.classList.add('list-group-item');
+            li.innerHTML = `
+                <strong>${evento.titulo}</strong> - ${evento.descripcion} - ${evento.estado} - Fecha de inicio: ${formatDate(evento.fechaInicio)}<br>
+                Fecha de fin: ${formatDate(evento.fechaFin)}<br>
+                Categoría: ${evento.categoria}<br>
+                Tipo: ${evento.tipo}<br>
+                Creado por: ${creador}<br>
+                Contacto: ${contactoCreador}
+            `;
+            eventosList.appendChild(li);
+        });
+
+        socket.on('eventoActualizado', (evento) => {
+            const eventosList = document.getElementById('eventos-list');
+            const items = eventosList.getElementsByTagName('li');
+            for (let item of items) {
+                if (item.getAttribute('data-id') === evento.id) {
+                    const creador = evento.Usuario ? `${evento.Usuario.nombre} ${evento.Usuario.apellidoPaterno} ${evento.Usuario.apellidoMaterno}` : 'Desconocido';
+                    const contactoCreador = evento.Usuario ? `${evento.Usuario.telefono}, ${evento.Usuario.correoElectronico}` : 'Desconocido';
+                    item.innerHTML = `
+                        <strong>${evento.titulo}</strong> - ${evento.descripcion} - ${evento.estado} - Fecha de inicio: ${formatDate(evento.fechaInicio)}<br>
+                        Fecha de fin: ${formatDate(evento.fechaFin)}<br>
+                        Categoría: ${evento.categoria}<br>
+                        Tipo: ${evento.tipo}<br>
+                        Creado por: ${creador}<br>
+                        Contacto: ${contactoCreador}
+                    `;
+                    break;
+                }
+            }
+        });
+
+        socket.on('estadoEventoActualizado', (evento) => {
+            const eventosList = document.getElementById('eventos-list');
+            const items = eventosList.getElementsByTagName('li');
+            for (let item of items) {
+                if (item.getAttribute('data-id') === evento.id) {
+                    const creador = evento.Usuario ? `${evento.Usuario.nombre} ${evento.Usuario.apellidoPaterno} ${evento.Usuario.apellidoMaterno}` : 'Desconocido';
+                    const contactoCreador = evento.Usuario ? `${evento.Usuario.telefono}, ${evento.Usuario.correoElectronico}` : 'Desconocido';
+                    item.innerHTML = `
+                        <strong>${evento.titulo}</strong> - ${evento.descripcion} - ${evento.estado} - Fecha de inicio: ${formatDate(evento.fechaInicio)}<br>
+                        Fecha de fin: ${formatDate(evento.fechaFin)}<br>
+                        Categoría: ${evento.categoria}<br>
+                        Tipo: ${evento.tipo}<br>
+                        Creado por: ${creador}<br>
+                        Contacto: ${contactoCreador}
+                    `;
+                    break;
+                }
+            }
+        });
+
+        socket.on('eventoEliminado', ({ id }) => {
+            const eventosList = document.getElementById('eventos-list');
+            const items = eventosList.getElementsByTagName('li');
+            for (let item of items) {
+                if (item.getAttribute('data-id') === id) {
+                    eventosList.removeChild(item);
+                    break;
+                }
+            }
+        });
+
+        // Inicialmente cargar las tareas, citas, eventos y disponibilidad desde el servidor
+        fetch('/tareas')
+            .then(response => response.json())
+            .then(tareas => {
+                renderTareas(tareas);
+            })
+            .catch(error => {
+                console.error('Error al cargar las tareas:', error);
+            });
+
+        fetch('/citas')
+            .then(response => response.json())
+            .then(citas => {
+                renderCitas(citas);
+                const events = convertCitasToEvents(citas);
+                calendar.addEventSource(events);
+            })
+            .catch(error => {
+                console.error('Error al cargar las citas:', error);
+            });
+
+        fetch('/eventos')
+            .then(response => response.json())
+            .then(eventos => {
+                renderEventos(eventos);
+            })
+            .catch(error => {
+                console.error('Error al cargar los eventos:', error);
+            });
+
+        fetch('/disponibilidad')
+            .then(response => response.json())
+            .then(disponibilidad => {
+                renderDisponibilidad(disponibilidad);
+            })
+            .catch(error => {
+                console.error('Error al cargar la disponibilidad:', error);
+            });
+    </script>
+</body>
+</html>

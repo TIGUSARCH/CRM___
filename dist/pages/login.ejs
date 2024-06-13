@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <title>Iniciar Sesión </title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="Able Pro es una plantilla de dashboard hecha con el framework de diseño Bootstrap 5. Able Pro está disponible en Bootstrap, React, CodeIgniter, Angular, y .net Technologies.">
+    <meta name="keywords" content="Plantilla de administración Bootstrap, Kit de UI de dashboard, Plantilla de dashboard, Panel de administración, dashboard de react, dashboard de angular">
+    <meta name="author" content="Phoenixcoded">
+    <link rel="stylesheet" href="../assets/fonts/inter/inter.css" id="main-font-link" />
+    <link rel="stylesheet" href="../assets/fonts/tabler-icons.min.css">
+    <link rel="stylesheet" href="../assets/fonts/feather.css">
+    <link rel="stylesheet" href="../assets/fonts/fontawesome.css">
+    <link rel="stylesheet" href="../assets/fonts/material.css">
+    <link rel="stylesheet" href="../assets/css/style.css" id="main-style-link">
+    <link rel="stylesheet" href="../assets/css/style-preset.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/izitoast/dist/css/iziToast.min.css">
+</head>
+<body data-pc-preset="preset-9" data-pc-sidebar-caption="true" data-pc-direction="ltr" data-pc-theme_contrast="" data-pc-theme="light">
+    <div class="loader-bg">
+        <div class="loader-track">
+            <div class="loader-fill"></div>
+        </div>
+    </div>
+    <div class="auth-main">
+        <div class="auth-wrapper v2">
+            <div class="auth-sidecontent"></div>
+            <div class="auth-form">
+                <div class="card my-5">
+                    <div class="card-body">
+                        <div class="text-center">
+                             <a href="#"><img src="../assets/images/logo-dark.jpg" alt="img_D-Conta&fiscal"></a>
+                        </div>
+                        <div class="saprator my-3">
+                            <!-- <span>O</span> -->
+                        </div>
+                        <h4 class="text-center f-w-500 mb-3">Inicia sesión con tu correo electrónico</h4>
+                        <div class="form-group mb-3">
+                            <input type="email" class="form-control" id="correoElectronico" placeholder="Correo Electrónico">
+                        </div>
+                        <div class="form-group mb-3">
+                            <input type="password" class="form-control" id="contrasena" placeholder="Contraseña">
+                        </div>
+                        <div class="d-flex mt-1 justify-content-between align-items-center">
+                            <div class="form-check">
+                                <input class="form-check-input input-primary" type="checkbox" id="customCheckc1" checked="">
+                                <label class="form-check-label text-muted" for="customCheckc1">Recuérdame</label>
+                            </div>
+                            <h6 class="text-secondary f-w-400 mb-0">¿Olvidaste tu contraseña?</h6>
+                        </div>
+                        <div class="d-grid mt-4">
+                            <button type="button" class="btn btn-primary" onclick="login()">Iniciar Sesión</button>
+                        </div>
+                        <div class="d-flex justify-content-between align-items-end mt-4">
+                            <h6 class="f-w-500 mb-0">¿No tienes una cuenta?</h6>
+                            <a href="#" class="link-primary">Crear Cuenta</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="../assets/js/plugins/popper.min.js"></script>
+    <script src="../assets/js/plugins/simplebar.min.js"></script>
+    <script src="../assets/js/plugins/bootstrap.min.js"></script>
+    <script src="../assets/js/fonts/custom-font.js"></script>
+    <script src="../assets/js/pcoded.js"></script>
+    <script src="../assets/js/plugins/feather.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/izitoast/dist/js/iziToast.min.js"></script>
+
+    
+    <script>layout_change_default()</script>
+    <script>layout_theme_contrast_change('false');</script>
+    <script>change_box_container('false');</script>
+    <script>layout_caption_change('true');</script>
+    <script>layout_rtl_change('false');</script>
+    <script>preset_change("preset-9");</script>
+    
+    <script>
+        async function login() {
+            const correoElectronico = document.getElementById('correoElectronico').value;
+            const contrasena = document.getElementById('contrasena').value;
+
+            try {
+                const response = await fetch('/auth/login', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ correoElectronico, contrasena }),
+                    credentials: 'include'
+                });
+
+                const data = await response.json();
+
+                if (response.ok) {
+                    // Mostrar notificación de éxito
+                    iziToast.success({
+                        title: 'Éxito',
+                        message: 'Inicio de sesión exitoso',
+                        position: 'topRight'
+                    });
+
+                    // Conectar a Socket.IO solo después de un inicio de sesión exitoso
+                    const socket = io();
+
+                    // Emitir evento de socket para unirse a la sala del usuario
+                    socket.emit('joinRoom', data.userId);
+
+                    // Manejar la confirmación de unión a la sala
+                    socket.on('joinedRoom', (message) => {
+                        console.log(message);
+                    });
+
+                    // Manejar la recepción de datos
+                    socket.on('tareas', (tareas) => {
+                        console.log('Tareas:', tareas);
+                    });
+
+                    socket.on('citas', (citas) => {
+                        console.log('Citas:', citas);
+                    });
+
+                    socket.on('eventos', (eventos) => {
+                        console.log('Eventos:', eventos);
+                    });
+
+                    socket.on('disponibilidad', (disponibilidad) => {
+                        console.log('Disponibilidad:', disponibilidad);
+                    });
+
+                    // Redireccionar a la página principal o a la página de administración
+                    setTimeout(() => {
+                        window.location.href = '/dev';
+                    }, 500); // Esperar un momento determinado (solo para pruebas con devtunnels xd)
+                } else {
+                    // Mostrar notificación de error
+                    iziToast.error({
+                        title: 'Error',
+                        message: data.message || 'Error al iniciar sesión',
+                        position: 'topRight'
+                    });
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                // Mostrar notificación de error
+                iziToast.error({
+                    title: 'Error',
+                    message: 'Error al iniciar sesión',
+                    position: 'topRight'
+                });
+            }
+        }
+    </script>
+</body>
+</html>
