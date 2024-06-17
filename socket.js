@@ -13,9 +13,10 @@ function configureSocketIO(io) {
 
         const userId = session.userId;
         console.log(`Un cliente se ha conectado: ${socket.id}, User ID: ${userId}`);
-
         socket.join(userId);
         console.log(`Cliente ${socket.id} se unió a la sala ${userId}`);
+        //? hasta qui no movi nada 
+
 
         socket.on('joinRoom', async () => {
             try {
@@ -38,7 +39,7 @@ function configureSocketIO(io) {
                     include: [{ model: Usuario, include: [Rol] }]
                 });
                 io.to(userId).emit('tareas', tareas);
-
+                
                 // Emitir solo las citas del usuario o todas si es administrador
                 const citas = await Cita.findAll({
                     where: whereClause,
@@ -58,8 +59,10 @@ function configureSocketIO(io) {
             } catch (error) {
                 console.error('Error al obtener los datos:', error);
             }
-        });
 
+            
+        });
+        
         socket.on('disconnect', () => {
             console.log('Un cliente se ha desconectado:', socket.id);
         });

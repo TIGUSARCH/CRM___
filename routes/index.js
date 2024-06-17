@@ -17,9 +17,38 @@ const documentosController = require('../controllers/documentosController');
 const disponibilidadController = require('../controllers/disponibilidadController');
 const participantesCitasController = require('../controllers/participantesCitasController');
 
+// //* web push notification 
+
+const webpush = require("../webpush");
+let pushSubscripton;
+
+router.post("/subscription", async (req, res) => {
+  pushSubscripton = req.body;
+  console.log(pushSubscripton);
+
+  // Server's Response
+  res.status(201).json();
+});
+
+router.post("/new-message", async (req, res) => {
+  const { title,message } = req.body;
+  // Payload Notification
+  const payload = JSON.stringify({
+    title,
+    message 
+  });
+  res.status(200).json();
+  try {
+    await webpush.sendNotification(pushSubscripton, payload);
+    console.log( pushSubscripton, payload)
+  } catch (error) {
+    console.log(error);
+  }
+});
 
 
 const multer = require('multer');
+const { title } = require('process');
 
 // Configurar Multer para manejar archivos adjuntos
 const storage = multer.diskStorage({
@@ -227,11 +256,29 @@ router.get('/analytics', (req, res) => {
     res.render('dashboard/analytics');  
 });
 
-router.get('/gestion-clientes', (req, res) => {
+//! Esto lo agregue yo
+// router.get('/gestion-clientes', (req, res) => {
+//     res.render('application/clientes');  
+// });
+
+// router.get('/gestion-usuarios', (req, res) => {
+//     res.render('application/usuarios');  
+// });
+router.get('/pruebas', (req, res) => {
+    res.render('application/pruebas');  
+});
+
+router.get('/msgAuth', (req, res) => {
+    res.render('pages/msgAuth');  
+});
+
+router.get('/gestion-clientes', authMiddleware(['Colaborador', 'Administrador']), (req, res) => {
     res.render('application/clientes');  
 });
 
-
+router.get('/gestion-usuarios',authMiddleware(['Administrador']), (req, res) => {
+    res.render('application/usuarios');  
+});
 
 
 module.exports = router;

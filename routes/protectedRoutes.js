@@ -30,4 +30,5 @@ router.get('/colaborador', authMiddleware(['Colaborador', 'Administrador']), (re
 
 
 
+
 module.exports = router;

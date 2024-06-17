@@ -19,7 +19,9 @@ module.exports = (requiredRoles) => {
             }
 
             if (requiredRoles && !requiredRoles.includes(usuario.Rol.tipo)) {
-                return res.status(403).json({ message: 'No tiene permiso para acceder a este recurso' });
+
+                return res.redirect('/msgAuth');
+                // return res.status(403).json({ message: 'No tiene permiso para acceder a este recurso' });
             }
 
             req.usuario = usuario;
