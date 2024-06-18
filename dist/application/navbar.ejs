@@ -1,10 +1,9 @@
 <nav class="pc-sidebar">
     <div class="navbar-wrapper">
-      <div class="m-header">
-        <a href="/dev" class="b-brand text-primary">
+      <div class="m-header" >
+        <a href="/dev" class="b-brand text-primary" style="padding: 3rem;">
           <!-- ========   Change your logo from here   ============ -->
-          <img src="../assets/images/logo-dark.svg" class="img-fluid logo-lg" alt="logo">
-          <span class="badge bg-light-success rounded-pill ms-2 theme-version">v9.0</span>
+          <img src="../assets/images/logo-dark.svg" class="img-fluid logo-lg" alt="logo" >
         </a>
       </div>
       <div class="navbar-content">
@@ -38,10 +37,10 @@
                   <i class="ti ti-lock"></i>
                   <span>Lock Screen</span>
                 </a>
-                <a href="#!">
+                <a href="" id="logoutLink">
                   <i class="ti ti-power"></i>
                   <span>Logout</span>
-                </a>
+              </a>
               </div>
             </div>
           </div>
@@ -184,5 +183,32 @@
 
 
   <script>
+    document.getElementById('logoutLink').addEventListener('click', function(event) {
+        event.preventDefault();
+    
+        fetch('/auth/logout', {
+            method: 'POST',
+            credentials: 'same-origin', // Include cookies in the request
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+        .then(response => {
+            if (response.ok) {
+                return response.json();
+            } else {
+                throw new Error('Logout failed');
+            }
+        })
+        .then(data => {
+            alert(data.message); // Optionally show a message to the user
+            // Redirect to the login page or another page
+            window.location.href = '/login'; // Change this to your login page URL
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+    });
+    </script>
 
-  </script>
+

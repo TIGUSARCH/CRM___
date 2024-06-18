@@ -5,6 +5,7 @@ const PUBLIC_VAPID_KEY= 'BCjPswBwAiMF7JADooY44uYPa_exmEzLSBjJg5ZsScJNVUsy9SMZ-3f
     const register = await navigator.serviceWorker.register("/worker.js", {
       scope: "/"
     });
+
     console.log("New Service Worker");
   
     // Listen Push Notifications
@@ -41,20 +42,20 @@ const PUBLIC_VAPID_KEY= 'BCjPswBwAiMF7JADooY44uYPa_exmEzLSBjJg5ZsScJNVUsy9SMZ-3f
   }
   
   // UI
-  const form = document.querySelector('#myform');
-  const message = document.querySelector('#message');
-  const title = 'Tarea';
-  form.addEventListener('submit', (e) => {
-    e.preventDefault();
-    fetch('/new-message', {
-      method: 'POST',
-      body: JSON.stringify({title: title,message: message.value}),
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    });
-    form.reset();
-  });
+  // const form = document.querySelector('#myform');
+  // const message = document.querySelector('#message');
+  // const title = 'Tarea';
+  // form.addEventListener('submit', (e) => {
+  //   e.preventDefault();
+  //   fetch('/new-message', {
+  //     method: 'POST',
+  //     body: JSON.stringify({title: title,message: message.value}),
+  //     headers: {
+  //       'Content-Type': 'application/json'
+  //     }
+  //   });
+  //   form.reset();
+  // });
   
   // Service Worker Support
   if ("serviceWorker" in navigator) {
