@@ -142,9 +142,12 @@ router.get('/prov', (req, res) => {
     res.render('application/prov');
 });
 
+router.get('/', authMiddleware(['Colaborador', 'Administrador']), (req, res) => {
+    res.render('application/calendar1');
+});
 
 
-router.get('/home', (req, res) => {
+router.get('/home', authMiddleware(['Colaborador', 'Administrador']), (req, res) => {
     res.render('application/home');
 });
 /* dist\application\ecom_product-list.ejs */
@@ -242,7 +245,7 @@ router.get('/add-evento', (req, res) => {
 });
 
 // Ruta para servir la vista calendar
-router.get('/calendar', (req, res) => {
+router.get('/calendar', authMiddleware(['Colaborador', 'Administrador']), (req, res) => {
     res.render('application/calendar');
 });
 

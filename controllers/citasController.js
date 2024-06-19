@@ -133,6 +133,7 @@ exports.crearCita = async (req, res) => {
         res.status(201).json(citaConDetalles);
     } catch (error) {
         await transaction.rollback();
+        console.log(error)
         res.status(500).json({ message: 'Error al crear la cita', error: error.message });
     }
 };

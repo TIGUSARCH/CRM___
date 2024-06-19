@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- [Head] start -->
+
+<head>
+  <title>Calendar | Able Pro Dashboard Template</title>
+  <!-- [Meta] -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="Able Pro is trending dashboard template made using Bootstrap 5 design framework. Able Pro is available in Bootstrap, React, CodeIgniter, Angular,  and .net Technologies.">
+  <meta name="keywords" content="Bootstrap admin template, Dashboard UI Kit, Dashboard Template, Backend Panel, react dashboard, angular dashboard">
+  <meta name="author" content="Phoenixcoded">
+
+  <!-- [Favicon] icon -->
+  <link rel="icon" href="../assets/images/favicon.svg" type="image/x-icon">
+  <!-- [Font] Family -->
+  <link rel="stylesheet" href="../assets/fonts/inter/inter.css" id="main-font-link" />
+  <!-- [Tabler Icons] https://tablericons.com -->
+  <link rel="stylesheet" href="../assets/fonts/tabler-icons.min.css" >
+  <!-- [Feather Icons] https://feathericons.com -->
+  <link rel="stylesheet" href="../assets/fonts/feather.css" >
+  <!-- [Font Awesome Icons] https://fontawesome.com/icons -->
+  <link rel="stylesheet" href="../assets/fonts/fontawesome.css" >
+  <!-- [Material Icons] https://fonts.google.com/icons -->
+  <link rel="stylesheet" href="../assets/fonts/material.css" >
+  <!-- [Template CSS Files] -->
+  <link rel="stylesheet" href="../assets/css/style.css" id="main-style-link" >
+  <link rel="stylesheet" href="../assets/css/style-preset.css" >
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-14K1GBX9FG"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
+
+    gtag('config', 'G-14K1GBX9FG');
+  </script>
+  <!-- WiserNotify -->
+  <script>
+    !(function () {
+      if (window.t4hto4) console.log('WiserNotify pixel installed multiple time in this page');
+      else {
+        window.t4hto4 = !0;
+        var t = document,
+          e = window,
+          n = function () {
+            var e = t.createElement('script');
+            (e.type = 'text/javascript'),
+              (e.async = !0),
+              (e.src = 'https://pt.wisernotify.com/pixel.js?ti=1jclj6jkfc4hhry'),
+              document.body.appendChild(e);
+          };
+        'complete' === t.readyState ? n() : window.attachEvent ? e.attachEvent('onload', n) : e.addEventListener('load', n, !1);
+      }
+    })();
+  </script>
+  <!-- Microsoft clarity -->
+  <script type="text/javascript">
+    (function (c, l, a, r, i, t, y) {
+      c[a] =
+        c[a] ||
+        function () {
+          (c[a].q = c[a].q || []).push(arguments);
+        };
+      t = l.createElement(r);
+      t.async = 1;
+      t.src = 'https://www.clarity.ms/tag/' + i;
+      y = l.getElementsByTagName(r)[0];
+      y.parentNode.insertBefore(t, y);
+    })(window, document, 'clarity', 'script', 'gkn6wuhrtb');
+  </script>
+
+</head>
+<!-- [Head] end -->
+<!-- [Body] Start -->
+
+<body data-pc-preset="preset-1" data-pc-sidebar-caption="true" data-pc-direction="ltr" data-pc-theme_contrast="" data-pc-theme="light">
+  <!-- [ Pre-loader ] start -->
+<div class="loader-bg">
+  <div class="loader-track">
+    <div class="loader-fill"></div>
+  </div>
+</div>
+<!-- [ Pre-loader ] End -->
+ <!-- [ Sidebar Menu ] start -->
+ <%- include('navbar')%>
+<!-- [ Sidebar Menu ] end --> <!-- [ Header Topbar ] start -->
+<%- include('header')%>
+
+<!-- [ Header ] end -->
+
+
+
+  <!-- [ Main Content ] start -->
+  <div class="pc-container">
+    <div class="pc-content">
+      <!-- [ breadcrumb ] start -->
+      <div class="page-header">
+        <div class="page-block">
+          <div class="row align-items-center">
+            <div class="col-md-12">
+              <ul class="breadcrumb">
+                <li class="breadcrumb-item"><a href="../dashboard/index.html">Home</a></li>
+                <li class="breadcrumb-item"><a href="javascript: void(0)">Application</a></li>
+                <li class="breadcrumb-item" aria-current="page">Calendar</li>
+              </ul>
+            </div>
+            <div class="col-md-12">
+              <div class="page-header-title">
+                <h2 class="mb-0">Calendar</h2>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- [ breadcrumb ] end -->
+
+      <!-- [ Main Content ] start -->
+      <div class="row">
+        <!-- [ sample-page ] start -->
+        <div class="col-12">
+          <div class="card">
+            <div class="card-body position-relative">
+              <div id="calendar" class="calendar"></div>
+            </div>
+          </div>
+        </div>
+        <!-- [ sample-page ] end -->
+      </div>
+      <!-- [ Main Content ] end -->
+    </div>
+  </div>
+
+  <div class="modal fade" id="calendar-modal" data-bs-keyboard="false" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3 class="calendar-modal-title f-w-600 text-truncate">Modal title</h3>
+          <a href="#" class="avtar avtar-s btn-link-danger btn-pc-default" data-bs-dismiss="modal">
+            <i class="ti ti-x f-20"></i>
+          </a>
+        </div>
+        <div class="modal-body">
+          <div class="d-flex">
+            <div class="flex-shrink-0">
+              <div class="avtar avtar-xs bg-light-secondary">
+                <i class="ti ti-heading f-20"></i>
+              </div>
+            </div>
+            <div class="flex-grow-1 ms-3">
+              <h5 class="mb-1"><b>Titulo</b></h5>
+              <p class="pc-event-title text-muted"></p>
+            </div>
+          </div>
+          <div class="d-flex">
+            <div class="flex-shrink-0">
+              <div class="avtar avtar-xs bg-light-warning">
+                <i class="ti ti-map-pin f-20"></i>
+              </div>
+            </div>
+            <div class="flex-grow-1 ms-3">
+              <h5 class="mb-1"><b>Ubicacion</b></h5>
+              <p class="pc-event-venue text-muted"></p>
+            </div>
+          </div>
+          <div class="d-flex">
+            <div class="flex-shrink-0">
+              <div class="avtar avtar-xs bg-light-danger">
+                <i class="ti ti-calendar-event f-20"></i>
+              </div>
+            </div>
+            <div class="flex-grow-1 ms-3">
+              <h5 class="mb-1"><b>Fecha</b></h5>
+              <p class="pc-event-date text-muted"></p>
+            </div>
+          </div>
+          <div class="d-flex">
+            <div class="flex-shrink-0">
+              <div class="avtar avtar-xs bg-light-primary">
+                <i class="ti ti-file-text f-20"></i>
+              </div>
+            </div>
+            <div class="flex-grow-1 ms-3">
+              <h5 class="mb-1"><b>Descripción</b></h5>
+              <p class="pc-event-description text-muted"></p>
+            </div>
+          </div>
+          <div class="d-flex">
+            <div class="flex-shrink-0">
+              <div class="avtar avtar-xs bg-light-warning">
+                <i class="ti ti-users f-20"></i>
+              </div>
+            </div>
+            <div class="flex-grow-1 ms-3">
+              <h5 class="mb-1"><b>Cliente</b></h5>
+              <p class="pc-event-cliente text-muted"></p>
+            </div>
+          </div>
+          <div class="d-flex">
+            <div class="flex-shrink-0">
+              <div class="avtar avtar-xs bg-light-primary">
+                <i class="ti ti-layout-grid f-20"></i>
+              </div>
+            </div>
+            <div class="flex-grow-1 ms-3">
+              <h5 class="mb-1"><b>Tipo</b></h5>
+              <p class="pc-event-tipo text-muted"></p>
+            </div>
+          </div>
+          <!-- <div class="d-flex">
+            <div class="flex-shrink-0">
+              <div class="avtar avtar-xs bg-light-primary">
+                <i class="ti ti-file-text f-20"></i>
+              </div>
+            </div>
+            <div class="flex-grow-1 ms-3">
+              <h5 class="mb-1"><b>horaInicio</b></h5>
+              <p class="pc-event-horaInicio text-muted"></p>
+            </div>
+          </div>
+          <div class="d-flex">
+            <div class="flex-shrink-0">
+              <div class="avtar avtar-xs bg-light-primary">
+                <i class="ti ti-file-text f-20"></i>
+              </div>
+            </div>
+            <div class="flex-grow-1 ms-3">
+              <h5 class="mb-1"><b>horaFin</b></h5>
+              <p class="pc-event-horaFin text-muted"></p>
+            </div>
+          </div> -->
+          <div class="d-flex">
+            <div class="flex-shrink-0">
+              <div class="avtar avtar-xs bg-light-success">
+                <i class="ti ti-user f-20"></i>
+              </div>
+            </div>
+            <div class="flex-grow-1 ms-3">
+              <h5 class="mb-1"><b>usuario</b></h5>
+              <p class="pc-event-usuario text-muted"></p>
+            </div>
+          </div>
+          <div class="d-flex">
+            <div class="flex-shrink-0">
+              <div class="avtar avtar-xs bg-light-warning">
+                <i class="ti ti-calendar-stats f-20"></i>
+              </div>
+            </div>
+            <div class="flex-grow-1 ms-3">
+              <h5 class="mb-1"><b>Estado</b></h5>
+              <p class="pc-event-estado text-muted"></p>
+            </div>
+          </div>
+          <div class="d-flex">
+            <div class="flex-shrink-0">
+              <div class="avtar avtar-xs bg-light-info">
+                <i class="ti ti-link f-20"></i>
+              </div>
+            </div>
+            <div class="flex-grow-1 ms-3">
+              <h5 class="mb-1"><b>Enlace</b></h5>
+              <p class="pc-event-enlace text-muted"></p>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer justify-content-between">
+          <ul class="list-inline me-auto mb-0">
+            <li class="list-inline-item align-bottom">
+              <a href="#" id="pc_event_remove" class="avtar avtar-s btn-link-danger btn-pc-default w-sm-auto" data-bs-toggle="tooltip"
+                title="Delete">
+                <i class="ti ti-trash f-18"></i>
+              </a>
+            </li>
+            <li class="list-inline-item align-bottom">
+              <a href="#" id="pc_event_edit" class="avtar avtar-s btn-link-success btn-pc-default" data-bs-toggle="tooltip"
+                title="Edit">
+                <i class="ti ti-edit-circle f-18"></i>
+              </a>
+            </li>
+          </ul>
+          <div class="flex-grow-1 text-end">
+            <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="offcanvas offcanvas-end cal-event-offcanvas" tabindex="-1" id="calendar-add_edit_event">
+    <div class="offcanvas-header">
+      <h3 class="f-w-600 text-truncate">Add Events</h3>
+      <a href="#" class="avtar avtar-s btn-link-danger btn-pc-default" data-bs-dismiss="offcanvas">
+        <i class="ti ti-x f-20"></i>
+      </a>
+    </div>
+    <div class="offcanvas-body">
+      <form id="pc-form-event" novalidate>
+        <div class="form-group">
+          <label class="form-label">Title</label>
+          <input type="email" class="form-control" id="pc-e-title" placeholder="Enter event title" autofocus>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Venue</label>
+          <input type="email" class="form-control" id="pc-e-venue" placeholder="Enter event venue">
+        </div>
+        <div class="form-group m-0">
+          <input type="hidden" class="form-control" id="pc-e-sdate">
+          <input type="hidden" class="form-control" id="pc-e-edate">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Description</label>
+          <textarea class="form-control" placeholder="Enter event description" rows="3"
+            id="pc-e-description"></textarea>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Type</label>
+          <select class="form-select" id="pc-e-type">
+            <option value="empty" selected>Type</option>
+            <option value="event-primary">Primary</option>
+            <option value="event-secondary">Secondary</option>
+            <option value="event-success">Success</option>
+            <option value="event-danger">Danger</option>
+            <option value="event-warning">Warning</option>
+            <option value="event-info">Info</option>
+          </select>
+        </div>
+        <div class="row justify-content-between">
+          <div class="col-auto"><button type="button" class="btn btn-link-danger btn-pc-default" data-bs-dismiss="offcanvas"><i
+                class="align-text-bottom me-1 ti ti-circle-x"></i> Close</button></div>
+          <div class="col-auto">
+            <button id="pc_event_add" type="button" class="btn btn-secondary" data-pc-action="add">
+              <span id="pc-e-btn-text"><i class="align-text-bottom me-1 ti ti-calendar-plus"></i> Add</span>
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- [ Main Content ] end -->
+  <%- include('footer')%> <!-- Required Js -->
+<script src="../assets/js/plugins/popper.min.js"></script>
+<script src="../assets/js/plugins/simplebar.min.js"></script>
+<script src="../assets/js/plugins/bootstrap.min.js"></script>
+<script src="../assets/js/fonts/custom-font.js"></script>
+<script src="../assets/js/pcoded.js"></script>
+<script src="../assets/js/plugins/feather.min.js"></script>
+
+
+
+
+
+<script>layout_change_default();</script>
+
+<script>layout_theme_contrast_change('false');</script>
+
+<script>change_box_container('false');</script>
+
+<script>layout_caption_change('true');</script>
+
+<script>layout_rtl_change('false');</script>
+
+<script>preset_change("preset-9");</script>
+
+  <!-- [Page Specific JS] start -->
+  <!-- calender js -->
+  <script src="../assets/js/plugins/index.global.min.js"></script>
+  <!-- Sweet Alert -->
+  <script src="../assets/js/plugins/sweetalert2.all.min.js"></script>
+  <script src="../assets/js/pages/calendar.js"></script>
+  <!-- [Page Specific JS] end -->
+</body>
+<!-- [Body] end -->
+
+</html>
