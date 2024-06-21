@@ -3,7 +3,7 @@
   <!-- [Head] start -->
 
   <head>
-    <title>Home </title>
+    <title>Gestión citas</title>
     <!-- [Meta] -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
@@ -13,7 +13,7 @@
     <meta name="author" content="Marco">
 
     <!-- [Favicon] icon -->
-    <!-- <link rel="icon" href="../assets/images/favicon.svg" type="image/x-icon"> [Font] Family -->
+<link rel="icon" href="../assets/images/logo-dark.svg" type="image/x-icon">
 <link rel="stylesheet" href="../assets/fonts/inter/inter.css" id="main-font-link" />
 <!-- [Tabler Icons] https://tablericons.com -->
 <link rel="stylesheet" href="../assets/fonts/tabler-icons.min.css" >
@@ -448,6 +448,7 @@
   </div>
 </div>
 <script src="/socket.io/socket.io.js"></script>
+<script src="../main.js"></script>
 <script>
 document.addEventListener('DOMContentLoaded', (event) => {
   const socket = io();
@@ -684,6 +685,15 @@ document.addEventListener('DOMContentLoaded', (event) => {
       .catch(error => {
           console.error('Error al crear la cita:', error);
       });
+      const title = "Nueva Cita"
+                    const message = nuevaCita.nombre
+                    fetch('/new-message', {
+                      method: 'POST',
+                      body: JSON.stringify({title: title,message: message}),
+                      headers: {
+                        'Content-Type': 'application/json'
+                      }
+                    });
   });
 
   document.getElementById('guardarCambiosEditarCita').addEventListener('click', () => {
@@ -725,6 +735,8 @@ document.addEventListener('DOMContentLoaded', (event) => {
           if (response.ok) {
               socket.emit('obtenerCitas');
               cerrarModal('modalEditarCita');
+            
+
           } else {
               alert('Error al actualizar la cita.');
           }
@@ -732,6 +744,8 @@ document.addEventListener('DOMContentLoaded', (event) => {
       .catch(error => {
           console.error('Error al actualizar la cita:', error);
       });
+      
+
   });
 
   const cerrarModal = (modalId) => {

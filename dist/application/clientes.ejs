@@ -3,13 +3,13 @@
 <!-- [Head] start -->
 
 <head>
-  <title>Customer List | Able Pro Dashboard Template</title>
+  <title>Gestión clientes</title>
   <!-- [Meta] -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <!-- [Favicon] icon -->
-  <link rel="icon" href="../assets/images/favicon.svg" type="image/x-icon"> <!-- [Font] Family -->
+  <link rel="icon" href="../assets/images/logo-dark.svg" type="image/x-icon"> <!-- [Font] Family -->
 <link rel="stylesheet" href="../assets/fonts/inter/inter.css" id="main-font-link" />
 <!-- [Tabler Icons] https://tablericons.com -->
 <link rel="stylesheet" href="../assets/fonts/tabler-icons.min.css" >
@@ -625,14 +625,28 @@
   
             console.log(responseData);
   
-            if (responseData) {
+            if (response.ok) {
                 // Mostrar un mensaje de éxito, cerrar el modal, etc.
                 fetchClientes();
-                console.log('Cliente actualizado exitosamente');
-                
-            } else {
+                iziToast.success({
+                  title: 'Éxito',
+                  message: 'Se guardo correctamente',
+                  position: 'topRight'
+                });  
+            } else if (response.status === 404) {
+              iziToast.warning({
+                title: 'Cuidado',
+                message: 'Ese cliente no existe',
+                position: 'topRight'
+              });
+            }  else {
                 // Mostrar un mensaje de error, etc.
                 console.error('Error al guardar el cliente');
+                iziToast.danger({
+                title: 'Algo salio mal',
+                message: 'No se pudo guardar los datos',
+                position: 'topRight'
+              });
             }
         } catch (error) {
             console.error('Error:', error);

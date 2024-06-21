@@ -14,8 +14,9 @@
                 <!-- <img src="../assets/images/user/avatar-1.jpg" alt="user-image" class="user-avtar wid-45 rounded-circle" /> -->
               </div>
               <div class="flex-grow-1 ms-3 me-2">
-                <h6 class="mb-0" id="navNombre">Martha Patricia</h6>
-                <small id="navRol">Administrator</small>
+                <h6 class="mb-0" id="navNombre"><%=user.nombre%></h6>
+                <small id="navRol"><%= user.Rol.tipo %></small>
+                <small id="navId"></small>
               </div>
               <a class="btn btn-icon btn-link-secondary avtar" data-bs-toggle="collapse" href="#pc_sidebar_userlink">
                 <svg class="pc-icon">
@@ -211,8 +212,8 @@
     </div>
   </nav>
 
-
   <script>
+    
     document.getElementById('logoutLink').addEventListener('click', function(event) {
         event.preventDefault();
     

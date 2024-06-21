@@ -24,7 +24,7 @@ exports.login = async (req, res) => {
 
         req.session.userId = usuario.id; // Guardar el ID del usuario en la sesión
         req.session.save(() => {
-            res.json({ message: 'Inicio de sesión exitoso', userId: usuario.id });
+            res.json({ message: 'Inicio de sesión exitoso', userId: usuario.id});
         });
     } catch (error) {
         res.status(500).json({ message: 'Error al iniciar sesión', error: error.message });

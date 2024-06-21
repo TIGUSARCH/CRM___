@@ -1,0 +1,3041 @@
+<!DOCTYPE html>
+<html lang="en">
+  <!-- [Head] start -->
+
+  <head>
+    <title>Home </title>
+    <!-- [Meta] -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="Able Pro is trending dashboard template made using Bootstrap 5 design framework. Able Pro is available in Bootstrap, React, CodeIgniter, Angular,  and .net Technologies.">
+    <meta name="keywords" content="Bootstrap admin template, Dashboard UI Kit, Dashboard Template, Backend Panel, react dashboard, angular dashboard">
+    <meta name="author" content="Marco">
+
+    <!-- [Favicon] icon -->
+    <!-- <link rel="icon" href="../assets/images/favicon.svg" type="image/x-icon"> [Font] Family -->
+<link rel="stylesheet" href="../assets/fonts/inter/inter.css" id="main-font-link" />
+<!-- [Tabler Icons] https://tablericons.com -->
+<link rel="stylesheet" href="../assets/fonts/tabler-icons.min.css" >
+<!-- [Feather Icons] https://feathericons.com -->
+<link rel="stylesheet" href="../assets/fonts/feather.css" >
+<!-- [Font Awesome Icons] https://fontawesome.com/icons -->
+<link rel="stylesheet" href="../assets/fonts/fontawesome.css" >
+<!-- [Material Icons] https://fonts.google.com/icons -->
+<link rel="stylesheet" href="../assets/fonts/material.css" >
+<!-- [Template CSS Files] -->
+<link rel="stylesheet" href="../assets/css/style.css" id="main-style-link" >
+<link rel="stylesheet" href="../assets/css/style-preset.css" >
+ <!-- FullCalendar CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/izitoast/1.4.0/css/iziToast.min.css" />
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-14K1GBX9FG"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/izitoast/1.4.0/js/iziToast.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.34/moment-timezone-with-data.min.js"></script>
+
+
+<!-- <script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() {
+    dataLayer.push(arguments);
+  }
+  gtag('js', new Date());
+
+  gtag('config', 'G-14K1GBX9FG');
+</script> -->
+<!-- WiserNotify -->
+<!-- <script>
+  !(function () {
+    if (window.t4hto4) console.log('WiserNotify pixel installed multiple time in this page');
+    else {
+      window.t4hto4 = !0;
+      var t = document,
+        e = window,
+        n = function () {
+          var e = t.createElement('script');
+          (e.type = 'text/javascript'),
+            (e.async = !0),
+            (e.src = 'https://pt.wisernotify.com/pixel.js?ti=1jclj6jkfc4hhry'),
+            document.body.appendChild(e);
+        };
+      'complete' === t.readyState ? n() : window.attachEvent ? e.attachEvent('onload', n) : e.addEventListener('load', n, !1);
+    }
+  })();
+</script> -->
+<!-- Microsoft clarity -->
+<!-- <script type="text/javascript">
+  (function (c, l, a, r, i, t, y) {
+    c[a] =
+      c[a] ||
+      function () {
+        (c[a].q = c[a].q || []).push(arguments);
+      };
+    t = l.createElement(r);
+    t.async = 1;
+    t.src = 'https://www.clarity.ms/tag/' + i;
+    y = l.getElementsByTagName(r)[0];
+    y.parentNode.insertBefore(t, y);
+  })(window, document, 'clarity', 'script', 'gkn6wuhrtb');
+</script> -->
+
+  </head>
+  <!-- [Head] end -->
+  <!-- [Body] Start -->
+
+  <body data-pc-preset="preset-1" data-pc-sidebar-caption="true" data-pc-direction="ltr" data-pc-theme_contrast="" data-pc-theme="light">
+    <!-- [ Pre-loader ] start -->
+<div class="loader-bg">
+  <div class="loader-track">
+    <div class="loader-fill"></div>
+  </div>
+</div>
+<!-- [ Pre-loader ] End -->
+ <!-- [ Sidebar Menu ] start -->
+ <%- include('navbar')%>
+
+
+<!-- [ Sidebar Menu ] end --> <!-- [ Header Topbar ] start -->
+<%- include('header')%>
+<!-- [ Header ] end -->
+
+
+
+    <!-- [ Main Content ] start -->
+    <div class="pc-container">
+      <div class="pc-content">
+        <!-- [ breadcrumb ] start -->
+        <div class="page-header">
+          <div class="page-block">
+            <div class="row align-items-center">
+              <div class="col-md-12">
+                <ul class="breadcrumb">
+                  <li class="breadcrumb-item"><a href="../dashboard">Home</a></li>
+                  <li class="breadcrumb-item"><a href="javascript: void(0)">Dashboard</a></li>
+                  <li class="breadcrumb-item" aria-current="page">Calendario Compartido</li>
+                </ul>
+              </div>
+              <div class="col-md-12">
+                <div class="page-header-title">
+                  <h2 class="mb-0">Calendario Compartido</h2>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- [ breadcrumb ] end -->
+
+        <!-- [ Main Content ] start -->
+        <div class="row">
+
+          <!-- Sección de Citas -->
+          <div class="col-lg-12">
+            <div class="card shadow-sm">
+                <div class="card-body pb-0">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <h5 class="mb-0">Gestión de Citas</h5>
+                    </div>
+                    <ul class="nav nav-tabs analytics-tab" id="pestanasCitas" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active" id="pestanas-cita-hoy" data-bs-toggle="tab" data-bs-target="#contenido-cita-hoy" type="button" role="tab" aria-controls="contenido-cita-hoy" aria-selected="true">Hoy</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="pestanas-cita-semana" data-bs-toggle="tab" data-bs-target="#contenido-cita-semana" type="button" role="tab" aria-controls="contenido-cita-semana" aria-selected="false">Esta Semana</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="pestanas-cita-mes" data-bs-toggle="tab" data-bs-target="#contenido-cita-mes" type="button" role="tab" aria-controls="contenido-cita-mes" aria-selected="false">Este Mes</button>
+                        </li>
+                    </ul>
+                </div>
+                <div class="tab-content p-3" id="contenidoCitas">
+                    <div class="tab-pane fade show active" id="contenido-cita-hoy" role="tabpanel" aria-labelledby="pestanas-cita-hoy">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead class="thead-light">
+                                    <tr>
+                                        <th scope="col">Nombre</th>
+                                        <th scope="col">Fecha y Hora</th>
+                                        <th scope="col">Tipo de Cita</th>
+                                        <th scope="col">Estado</th>
+                                        <th scope="col">Usuario</th>
+                                        <th scope="col">Cliente</th>
+                                        <th scope="col" class="text-center">Acciones</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="lista-citas-hoy">
+                                    <!-- Las citas de hoy se agregarán aquí dinámicamente -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="contenido-cita-semana" role="tabpanel" aria-labelledby="pestanas-cita-semana">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead class="thead-light">
+                                    <tr>
+                                        <th scope="col">Nombre</th>
+                                        <th scope="col">Fecha y Hora</th>
+                                        <th scope="col">Tipo de Cita</th>
+                                        <th scope="col">Estado</th>
+                                        <th scope="col">Usuario</th>
+                                        <th scope="col">Cliente</th>
+                                        <th scope="col" class="text-center">Acciones</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="lista-citas-semana">
+                                    <!-- Las citas de esta semana se agregarán aquí dinámicamente -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="contenido-cita-mes" role="tabpanel" aria-labelledby="pestanas-cita-mes">
+                        <div id="calendar"></div>
+                    </div>
+                </div>
+                <div class="card-footer text-end">
+                    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalCrearCita">
+                        + Nueva Cita
+                    </button>
+                </div>
+            </div>
+          </div>
+
+
+          <!-- Modal para ver detalles de la cita -->
+          <div class="modal fade" id="modalDetallesCita" tabindex="-1" aria-labelledby="modalDetallesCitaLabel" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered modal-lg">
+                  <div class="modal-content">
+                      <div class="modal-header">
+                          <h5 class="modal-title" id="modalDetallesCitaLabel">Detalles de la Cita</h5>
+                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                      </div>
+                      <div class="modal-body">
+                          <p><strong>Nombre:</strong> <span id="detalles-cita-nombre"></span></p>
+                          <p><strong>Fecha y Hora:</strong> <span id="detalles-cita-fecha"></span></p>
+                          <p><strong>Tipo de Cita:</strong> <span id="detalles-cita-tipo"></span></p>
+                          <p><strong>Estado:</strong> <span id="detalles-cita-estado"></span></p>
+                          <p><strong>Usuario:</strong> <span id="detalles-cita-usuario"></span></p>
+                          <p><strong>Cliente:</strong> <span id="detalles-cita-cliente"></span></p>
+                          <p><strong>Descripción:</strong> <span id="detalles-cita-descripcion"></span></p>
+                      </div>
+                      <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                      </div>
+                  </div>
+              </div>
+          </div>
+
+          <!-- Modal para editar detalles de la cita -->
+          <div class="modal fade" id="modalEditarCita" tabindex="-1" aria-labelledby="modalEditarCitaLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modalEditarCitaLabel">Editar Cita</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="formEditarCita">
+                            <div class="mb-3">
+                                <label for="editar-cita-nombre" class="form-label">Nombre</label>
+                                <input type="text" class="form-control" id="editar-cita-nombre" name="nombre" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="editar-cita-fecha" class="form-label">Fecha</label>
+                                <input type="date" class="form-control" id="editar-cita-fecha" name="fecha" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="editar-cita-hora-inicio" class="form-label">Hora de Inicio</label>
+                                <input type="time" class="form-control" id="editar-cita-hora-inicio" name="horaInicio" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="editar-cita-hora-fin" class="form-label">Hora de Fin</label>
+                                <input type="time" class="form-control" id="editar-cita-hora-fin" name="horaFin" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="editar-cita-tipo" class="form-label">Tipo de Cita</label>
+                                <input type="text" class="form-control" id="editar-cita-tipo" name="tipoCita" required>
+                            </div>
+                            <div class="mb-3">
+                              <label for="crear-cita-lugar" class="form-label">Lugar</label>
+                              <input type="text" class="form-control" id="crear-cita-lugar" name="lugar" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="editar-cita-estado" class="form-label">Estado</label>
+                                <select class="form-control" id="editar-cita-estado" name="estado" required>
+                                    <option value="">Seleccionar</option>
+                                    <option value="pendiente">Pendiente</option>
+                                    <option value="completada">Completada</option>
+                                    <option value="cancelada">Cancelada</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label for="editar-cita-usuario" class="form-label">Usuario</label>
+                                <select class="form-control" id="editar-cita-usuario" name="usuarioId" required>
+                                    <option value="">Seleccionar</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label for="editar-cita-cliente" class="form-label">Cliente</label>
+                                <select class="form-control" id="editar-cita-cliente" name="clienteId" required>
+                                    <option value="">Seleccionar</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label for="editar-cita-descripcion" class="form-label">Descripción</label>
+                                <textarea class="form-control" id="editar-cita-descripcion" name="descripcion" rows="3"></textarea>
+                            </div>
+                            <input type="hidden" id="editar-cita-id">
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                        <button type="button" class="btn btn-primary" id="guardarCambiosEditarCita">Guardar Cambios</button>
+                    </div>
+                </div>
+            </div>
+          </div>
+
+
+          <!-- Modal para crear nueva cita -->
+          <div class="modal fade" id="modalCrearCita" tabindex="-1" aria-labelledby="modalCrearCitaLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-xl">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modalCrearCitaLabel">Crear Nueva Cita</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="formCrearCita">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label for="crear-cita-tipo" class="form-label">Tipo de Cita</label>
+                                        <select class="form-control" id="crear-cita-tipo" name="tipoCita" required>
+                                            <option value="">Seleccionar</option>
+                                            <option value="Tramite ante el SAT">Tramite ante el SAT</option>
+                                            <option value="Asesoría Personalizada">Asesoría Personalizada</option>
+                                            <option value="Asesoría Contable y fiscal">Asesoría Contable y fiscal</option>
+                                            <option value="Otro">Otro</option>
+                                        </select>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="crear-cita-nombre" class="form-label">Nombre</label>
+                                        <input type="text" class="form-control" id="crear-cita-nombre" name="nombre" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="crear-cita-usuario" class="form-label">Usuario</label>
+                                        <select class="form-control" id="crear-cita-usuario" name="usuarioId" required>
+                                            <option value="">Seleccionar</option>
+                                        </select>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="crear-cita-cliente" class="form-label">Cliente</label>
+                                        <div class="d-flex">
+                                            <select class="form-control me-2" id="crear-cita-cliente" name="clienteId" required>
+                                                <option value="">Seleccionar</option>
+                                            </select>
+                                            <button type="button" class="btn btn-outline-primary" id="botonAnadirCliente">Añadir</button>
+                                        </div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <div class="form-check form-switch">
+                                            <input class="form-check-input" type="checkbox" id="incluirDocumentosSwitch">
+                                            <label class="form-check-label" for="incluirDocumentosSwitch">Incluir Documentos</label>
+                                        </div>
+                                        <div id="documentosChecklist" class="mt-3" style="display: none;">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" id="documento-ine">
+                                                <label class="form-check-label" for="documento-ine">INE</label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" id="documento-acta-nacimiento">
+                                                <label class="form-check-label" for="documento-acta-nacimiento">Acta de Nacimiento</label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" id="documento-rfc">
+                                                <label class="form-check-label" for="documento-rfc">RFC</label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" id="documento-comprobante-domicilio">
+                                                <label class="form-check-label" for="documento-comprobante-domicilio">Comprobante de Domicilio</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="crear-cita-descripcion" class="form-label">Descripción</label>
+                                        <textarea class="form-control" id="crear-cita-descripcion" name="descripcion" rows="3"></textarea>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label for="crear-cita-fecha" class="form-label">Fecha</label>
+                                        <input type="date" class="form-control" id="crear-cita-fecha" name="fecha" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="crear-cita-hora-inicio" class="form-label">Hora de Inicio</label>
+                                        <div class="input-group">
+                                            <input type="time" class="form-control" id="crear-cita-hora-inicio" name="horaInicio" required>
+                                            <select class="form-control" id="crear-cita-hora-inicio-ampm">
+                                                <option value="AM">AM</option>
+                                                <option value="PM">PM</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="crear-cita-hora-fin" class="form-label">Hora de Fin</label>
+                                        <div class="input-group">
+                                            <input type="time" class="form-control" id="crear-cita-hora-fin" name="horaFin" required>
+                                            <select class="form-control" id="crear-cita-hora-fin-ampm">
+                                                <option value="AM">AM</option>
+                                                <option value="PM">PM</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">Lugar</label>
+                                        <div class="d-flex justify-content-between">
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="radio" id="crear-cita-plaza-hidalgo" name="lugar" value="Plaza hidalgo">
+                                                <label class="form-check-label" for="crear-cita-plaza-hidalgo">Plaza hidalgo</label>
+                                            </div>
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="radio" id="crear-cita-virtual" name="lugar" value="Virtual">
+                                                <label class="form-check-label" for="crear-cita-virtual">Virtual</label>
+                                            </div>
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="radio" id="crear-cita-otro-lugar" name="lugar" value="Otro">
+                                                <label class="form-check-label" for="crear-cita-otro-lugar">Otro</label>
+                                            </div>
+                                        </div>
+                                        <div id="lugarVirtual" class="mt-3" style="display: none;">
+                                            <label for="crear-cita-enlace-virtual" class="form-label">Enlace de acceso</label>
+                                            <input type="text" class="form-control" id="crear-cita-enlace-virtual" name="enlaceVirtual">
+                                        </div>
+                                        <div id="lugarOtro" class="mt-3" style="display: none;">
+                                            <label for="crear-cita-lugar-especificar" class="form-label">Favor de especificar</label>
+                                            <input type="text" class="form-control" id="crear-cita-lugar-especificar" name="lugarEspecificar">
+                                        </div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <button class="btn btn-primary lh-1" id="botonVerificarHorario" type="button">
+                                            Verificar Horario
+                                        </button>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="crear-cita-estado" class="form-label">Estado</label>
+                                        <select class="form-control" id="crear-cita-estado" name="estado" required>
+                                            <option value="">Seleccionar</option>
+                                            <option value="pendiente">Pendiente</option>
+                                            <option value="completada">Completada</option>
+                                            <option value="cancelada">Cancelada</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="cancelarCrearCita">Cancelar</button>
+                        <button type="button" class="btn btn-primary" id="botonCrearCita">Crear Cita</button>
+                    </div>
+                </div>
+            </div>
+          </div>
+
+
+
+
+          <!-- Modal para crear un nuevo cliente -->
+          <div class="modal fade" id="modalCrearCliente" tabindex="-1" aria-labelledby="modalCrearClienteLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modalCrearClienteLabel">Crear Nuevo Cliente</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="formCrearCliente">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label for="crear-cliente-nombre" class="form-label">Nombre</label>
+                                        <input type="text" class="form-control" id="crear-cliente-nombre" name="nombre" required>
+                                        <div class="invalid-feedback">Este valor es requerido*</div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="crear-cliente-apellido-paterno" class="form-label">Apellido Paterno</label>
+                                        <input type="text" class="form-control" id="crear-cliente-apellido-paterno" name="apellidoPaterno">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="crear-cliente-apellido-materno" class="form-label">Apellido Materno</label>
+                                        <input type="text" class="form-control" id="crear-cliente-apellido-materno" name="apellidoMaterno">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="crear-cliente-telefono" class="form-label">Teléfono</label>
+                                        <input type="tel" class="form-control" id="crear-cliente-telefono" name="telefono" pattern="[0-9]{10}">
+                                        <div class="invalid-feedback">Debe ser un número de 10 dígitos*</div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label for="crear-cliente-correo-electronico" class="form-label">Correo Electrónico</label>
+                                        <input type="email" class="form-control" id="crear-cliente-correo-electronico" name="correoElectronico" required>
+                                        <div class="invalid-feedback">Este valor es requerido* y debe ser un correo válido</div>
+                                    </div>
+                                    
+                                    <div class="mb-3" id="contenedor-imagen-archivo" style="display: none;">
+                                        <label for="crear-cliente-imagen-archivo" class="form-label">Subir Imagen</label>
+                                        <input type="file" class="form-control" id="crear-cliente-imagen-archivo" name="imagenArchivo">
+                                    </div>
+                                    <div class="mb-3" id="contenedor-imagen-enlace" style="display: none;">
+                                        <label for="crear-cliente-imagen-enlace" class="form-label">Enlace de Imagen</label>
+                                        <input type="url" class="form-control" id="crear-cliente-imagen-enlace" name="imagenEnlace">
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="cancelarCrearCliente">Cancelar</button>
+                        <button type="button" class="btn btn-primary" id="botonCrearCliente">Crear Cliente</button>
+                    </div>
+                </div>
+            </div>
+          </div>
+
+          <script>
+            document.getElementById('incluirDocumentosSwitch').addEventListener('change', function () {
+                const documentosChecklist = document.getElementById('documentosChecklist');
+                if (this.checked) {
+                    documentosChecklist.style.display = 'block';
+                } else {
+                    documentosChecklist.style.display = 'none';
+                }
+            });
+
+            const lugarRadios = document.querySelectorAll('input[name="lugar"]');
+            lugarRadios.forEach(radio => {
+                radio.addEventListener('change', function () {
+                    const lugarVirtual = document.getElementById('lugarVirtual');
+                    const lugarOtro = document.getElementById('lugarOtro');
+                    lugarVirtual.style.display = this.value === 'Virtual' ? 'block' : 'none';
+                    lugarOtro.style.display = this.value === 'Otro' ? 'block' : 'none';
+                });
+            });
+
+            const modalCrearCita = document.getElementById('modalCrearCita');
+            modalCrearCita.addEventListener('show.bs.modal', function () {
+                document.getElementById('incluirDocumentosSwitch').checked = false;
+                document.getElementById('documentosChecklist').style.display = 'none';
+
+                lugarRadios.forEach(radio => {
+                    radio.checked = false;
+                });
+                document.getElementById('lugarVirtual').style.display = 'none';
+                document.getElementById('lugarOtro').style.display = 'none';
+            });
+
+            document.getElementById('botonVerificarHorario').addEventListener('click', function() {
+                // Lógica para verificar el horario
+            });
+          </script> 
+
+        
+
+          
+          <script>
+            document.addEventListener('DOMContentLoaded', () => {
+              const modales = ['modalCrearCita', 'modalCrearCliente'];
+          
+              modales.forEach(modalId => {
+                const modalElement = document.getElementById(modalId);
+                modalElement.addEventListener('hidden.bs.modal', () => {
+                  document.body.classList.remove('modal-open');
+                  document.querySelectorAll('.modal-backdrop').forEach(el => el.remove());
+                });
+              });
+            });
+          </script>
+          
+
+          <!-- Sección de Citas -->
+          
+        </div>
+        <!-- [ Main Content ] end -->
+      </div>
+    </div>
+    <!-- [ Main Content ] end -->
+    
+
+    <!-- [Page Specific JS] start -->
+    <script src="../assets/js/plugins/apexcharts.min.js"></script>
+    <script src="../assets/js/pages/dashboard-default.js"></script>
+    <!-- [Page Specific JS] end -->
+    <!-- Required Js -->
+    <script src="../assets/js/plugins/popper.min.js"></script>
+    <script src="../assets/js/plugins/simplebar.min.js"></script>
+    <script src="../assets/js/plugins/bootstrap.min.js"></script>
+    <script src="../assets/js/fonts/custom-font.js"></script>
+    <script src="../assets/js/pcoded.js"></script>
+    <script src="../assets/js/plugins/feather.min.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0/js/bootstrap.bundle.min.js"></script>
+
+    <script src="/socket.io/socket.io.js"></script>
+
+
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+          const socket = io();
+          const cargarUsuariosYClientes = async () => {
+              try {
+                  const [usuariosResponse, clientesResponse] = await Promise.all([fetch('/usuarios'), fetch('/clientes')]);
+                  const usuarios = await usuariosResponse.json();
+                  const clientes = await clientesResponse.json();
+  
+                  if (usuarios && usuarios.data) {
+                      actualizarSelectUsuarios('crear-cita-usuario', usuarios.data);
+                      actualizarSelectUsuarios('editar-cita-usuario', usuarios.data);
+                  } else {
+                      console.error('La respuesta de usuarios no es un array:', usuarios);
+                  }
+  
+                  if (clientes && clientes.data) {
+                      actualizarSelectClientes('crear-cita-cliente', clientes.data);
+                      actualizarSelectClientes('editar-cita-cliente', clientes.data);
+                  } else {
+                      console.error('La respuesta de clientes no es un array:', clientes);
+                  }
+              } catch (error) {
+                  console.error('Error al cargar usuarios y clientes:', error);
+              }
+          };
+  
+          const actualizarSelectUsuarios = (selectId, usuarios) => {
+              const select = document.getElementById(selectId);
+              if (select) {
+                  select.innerHTML = '<option value="">Seleccionar</option>' + usuarios.map(usuario => `<option value="${usuario.id}">${usuario.nombre} ${usuario.apellidoPaterno} ${usuario.apellidoMaterno}</option>`).join('');
+              }
+          };
+  
+          const actualizarSelectClientes = (selectId, clientes) => {
+              const select = document.getElementById(selectId);
+              if (select) {
+                  select.innerHTML = '<option value="">Seleccionar</option>' + clientes.map(cliente => `<option value="${cliente.id}">${cliente.nombre} ${cliente.apellidoPaterno} ${cliente.apellidoMaterno}</option>`).join('');
+              }
+          };
+  
+          document.getElementById('botonAnadirCliente').addEventListener('click', () => {
+              const crearClienteModal = new bootstrap.Modal(document.getElementById('modalCrearCliente'));
+              crearClienteModal.show();
+          });
+  
+          document.getElementById('botonCrearCliente').addEventListener('click', () => {
+              const form = document.getElementById('formCrearCliente');
+              if (!form.checkValidity()) {
+                  form.classList.add('was-validated');
+                  return;
+              }
+  
+              const nombre = document.getElementById('crear-cliente-nombre').value;
+              const correoElectronico = document.getElementById('crear-cliente-correo-electronico').value;
+              const metodoImagen = document.querySelector('input[name="metodoImagen"]:checked');
+              let imagen = '';
+  
+              if (metodoImagen) {
+                  if (metodoImagen.value === 'archivo') {
+                      const imagenArchivo = document.getElementById('crear-cliente-imagen-archivo').files[0];
+                      if (!imagenArchivo) {
+                          iziToast.error({
+                              title: 'Error',
+                              message: 'Debe seleccionar un archivo de imagen.',
+                              position: 'topCenter',
+                          });
+                          return;
+                      }
+                      imagen = imagenArchivo.name;  // Solo enviamos el nombre del archivo
+                  } else if (metodoImagen.value === 'enlace') {
+                      imagen = document.getElementById('crear-cliente-imagen-enlace').value;
+                      if (!imagen) {
+                          iziToast.error({
+                              title: 'Error',
+                              message: 'Debe proporcionar un enlace de imagen.',
+                              position: 'topCenter',
+                          });
+                          return;
+                      }
+                  }
+              }
+  
+              const nuevoCliente = {
+                  nombre: nombre,
+                  apellidoPaterno: document.getElementById('crear-cliente-apellido-paterno').value,
+                  apellidoMaterno: document.getElementById('crear-cliente-apellido-materno').value,
+                  telefono: document.getElementById('crear-cliente-telefono').value,
+                  correoElectronico: correoElectronico,                  
+              };
+  
+              fetch('/clientes', {
+                  method: 'POST',
+                  headers: {
+                      'Content-Type': 'application/json'
+                  },
+                  body: JSON.stringify(nuevoCliente)
+              })
+              .then(response => response.json())
+              .then(cliente => {
+                  if (cliente) {
+                      actualizarSelectClientes('crear-cita-cliente', [cliente]);
+                      actualizarSelectClientes('editar-cita-cliente', [cliente]);
+                      const crearClienteModal = bootstrap.Modal.getInstance(document.getElementById('modalCrearCliente'));
+                      crearClienteModal.hide();
+                      document.getElementById('formCrearCliente').reset();
+                      form.classList.remove('was-validated');
+                      iziToast.success({
+                          title: 'Éxito',
+                          message: 'El cliente ha sido creado exitosamente.',
+                          position: 'topCenter',
+                      });
+                  } else {
+                      iziToast.error({
+                          title: 'Error',
+                          message: 'Error al crear el cliente.',
+                          position: 'topCenter',
+                      });
+                  }
+              })
+              .catch(error => {
+                  console.error('Error al crear el cliente:', error);
+                  iziToast.error({
+                      title: 'Error',
+                      message: 'Error al crear el cliente.',
+                      position: 'topCenter',
+                  });
+              });
+          });
+  
+          const renderizarCita = (cita, listaId) => {
+              const lista = document.getElementById(listaId);
+              if (lista) {
+                  const usuario = cita.Usuario ? `${cita.Usuario.nombre} ${cita.Usuario.apellidoPaterno} ${cita.Usuario.apellidoMaterno}` : 'Desconocido';
+                  const cliente = cita.Cliente ? `${cita.Cliente.nombre} ${cita.Cliente.apellidoPaterno} ${cita.Cliente.apellidoMaterno}` : 'Desconocido';
+                  const fila = document.createElement('tr');
+                  fila.setAttribute('data-id', cita.id);
+                  fila.innerHTML = `
+                      <td><a href="#" class="nombre-cita" data-id="${cita.id}">${cita.nombre}</a></td>
+                      <td>${formatFechaHora(cita.horaInicio, cita.horaFin)}</td>
+                      <td>${cita.tipoCita}</td>
+                      <td><span class="${obtenerClaseEstado(cita.estado)}">${cita.estado}</span></td>
+                      <td>${usuario}</td>
+                      <td>${cliente}</td>
+                      <td class="text-center">
+                          <ul class="list-inline mb-0">
+                              <li class="list-inline-item" data-bs-toggle="tooltip" title="Ver">
+                                  <a href="#" class="avtar avtar-xs btn-link-secondary btn-pc-default detalles-cita" data-id="${cita.id}">
+                                      <i class="ti ti-eye f-18"></i>
+                                  </a>
+                              </li>
+                              <li class="list-inline-item" data-bs-toggle="tooltip" title="Editar">
+                                  <a href="#" class="avtar avtar-xs btn-link-success btn-pc-default editar-cita" data-id="${cita.id}">
+                                      <i class="ti ti-edit-circle f-18"></i>
+                                  </a>
+                              </li>
+                              <li class="list-inline-item" data-bs-toggle="tooltip" title="Eliminar">
+                                  <a href="#" class="avtar avtar-xs btn-link-danger btn-pc-default eliminar-cita" data-id="${cita.id}">
+                                      <i class="ti ti-trash f-18"></i>
+                                  </a>
+                              </li>
+                          </ul>
+                      </td>
+                  `;
+                  lista.appendChild(fila);
+  
+                  fila.querySelector('.nombre-cita').addEventListener('click', (e) => {
+                      e.preventDefault();
+                      mostrarDetallesCita(cita);
+                  });
+  
+                  fila.querySelector('.detalles-cita').addEventListener('click', (e) => {
+                      e.preventDefault();
+                      mostrarDetallesCita(cita);
+                  });
+  
+                  fila.querySelector('.editar-cita').addEventListener('click', (e) => {
+                      e.preventDefault();
+                      mostrarEditarCita(cita);
+                  });
+  
+                  fila.querySelector('.eliminar-cita').addEventListener('click', (e) => {
+                      e.preventDefault();
+                      iziToast.question({
+                          timeout: 20000,
+                          close: false,
+                          overlay: false,
+                          displayMode: 'once',
+                          id: 'question',
+                          title: 'Confirmación',
+                          message: '¿Estás seguro de que deseas eliminar esta cita?',
+                          position: 'center',
+                          buttons: [
+                              ['<button><b>SI</b></button>', function (instance, toast) {
+                                  fetch(`/citas/${cita.id}`, { method: 'DELETE' })
+                                      .then(response => {
+                                          if (response.ok) {
+                                              socket.emit('citaEliminada', { id: cita.id });
+                                              fila.remove();
+                                              iziToast.success({
+                                                  title: 'Éxito',
+                                                  message: 'Cita eliminada correctamente.',
+                                              });
+                                          } else {
+                                              iziToast.error({
+                                                  title: 'Error',
+                                                  message: 'Error al eliminar la cita.',
+                                              });
+                                          }
+                                      })
+                                      .catch(error => {
+                                          console.error('Error al eliminar la cita:', error);
+                                          iziToast.error({
+                                              title: 'Error',
+                                              message: 'Error al eliminar la cita.',
+                                          });
+                                      });
+                                  instance.hide({ transitionOut: 'fadeOut' }, toast, 'button');
+                              }, true],
+                              ['<button>NO</button>', function (instance, toast) {
+                                  instance.hide({ transitionOut: 'fadeOut' }, toast, 'button');
+                              }],
+                          ],
+                      });
+                  });
+              }
+          };
+  
+          const formatFechaHora = (horaInicio, horaFin) => {
+              const opcionesHora = { hour: 'numeric', minute: 'numeric', hour12: true };
+              const opcionesFecha = { weekday: 'short', day: 'numeric', month: 'short', year: 'numeric' };
+              const inicio = new Date(horaInicio).toLocaleString('es-MX', opcionesHora);
+              const fin = new Date(horaFin).toLocaleString('es-MX', opcionesHora);
+              const fecha = new Date(horaInicio).toLocaleDateString('es-MX', opcionesFecha).replace(/\./g, '');
+              return `${fecha}, ${inicio} - ${fin}`;
+          };
+  
+          const obtenerClaseEstado = (estado) => {
+              switch (estado) {
+                  case 'pendiente':
+                      return 'badge bg-light-warning rounded-pill f-12';
+                  case 'completada':
+                      return 'badge bg-light-success rounded-pill f-12';
+                  default:
+                      return 'badge bg-light-secondary rounded-pill f-12';
+              }
+          };
+  
+          const mostrarDetallesCita = (cita) => {
+              document.getElementById('detalles-cita-nombre').textContent = cita.nombre;
+              document.getElementById('detalles-cita-fecha').textContent = formatFechaHora(cita.horaInicio, cita.horaFin);
+              document.getElementById('detalles-cita-tipo').textContent = cita.tipoCita;
+              document.getElementById('detalles-cita-estado').textContent = cita.estado;
+              const usuario = cita.Usuario ? `${cita.Usuario.nombre} ${cita.Usuario.apellidoPaterno} ${cita.Usuario.apellidoMaterno}` : 'Desconocido';
+              document.getElementById('detalles-cita-usuario').textContent = usuario;
+              const cliente = cita.Cliente ? `${cita.Cliente.nombre} ${cita.Cliente.apellidoPaterno} ${cita.Cliente.apellidoMaterno}` : 'Desconocido';
+              document.getElementById('detalles-cita-cliente').textContent = cliente;
+              document.getElementById('detalles-cita-descripcion').textContent = cita.descripcion || '';
+              const detallesCitaModal = new bootstrap.Modal(document.getElementById('modalDetallesCita'));
+              detallesCitaModal.show();
+          };
+  
+          const mostrarEditarCita = (cita) => {
+              cargarUsuariosYClientes();
+              document.getElementById('editar-cita-nombre').value = cita.nombre;
+              document.getElementById('editar-cita-fecha').value = cita.fecha.split('T')[0];
+              document.getElementById('editar-cita-hora-inicio').value = new Date(cita.horaInicio).toISOString().substr(11, 5);
+              document.getElementById('editar-cita-hora-fin').value = new Date(cita.horaFin).toISOString().substr(11, 5);
+              document.getElementById('editar-cita-tipo').value = cita.tipoCita;
+              document.getElementById('editar-cita-estado').value = cita.estado;
+              document.getElementById('editar-cita-usuario').value = cita.usuarioId;
+              document.getElementById('editar-cita-cliente').value = cita.clienteId;
+              document.getElementById('editar-cita-descripcion').value = cita.descripcion || '';
+              document.getElementById('editar-cita-id').value = cita.id;
+              const editarCitaModal = new bootstrap.Modal(document.getElementById('modalEditarCita'));
+              editarCitaModal.show();
+          };
+  
+          const eliminarCita = (id) => {
+              if (confirm('¿Estás seguro de que deseas eliminar esta cita?')) {
+                  fetch(`/citas/${id}`, { method: 'DELETE' })
+                      .then(response => {
+                          if (response.ok) {
+                              const fila = document.querySelector(`tr[data-id="${id}"]`);
+                              if (fila) {
+                                  fila.remove();
+                                  socket.emit('citaEliminada', { id });
+                              }
+                          } else {
+                              alert('Error al eliminar la cita');
+                          }
+                      })
+                      .catch(error => {
+                          console.error('Error al eliminar la cita:', error);
+                      });
+              }
+          };
+  
+          const formatearFechaHora = (fecha, hora, ampm) => {
+              let [hours, minutes] = hora.split(':');
+              if (ampm === 'PM' && hours !== '12') {
+                  hours = parseInt(hours, 10) + 12;
+              }
+              if (ampm === 'AM' && hours === '12') {
+                  hours = '00';
+              }
+              return `${fecha}T${hours}:${minutes}:00-06:00`;
+          };
+  
+          document.getElementById('botonCrearCita').addEventListener('click', () => {
+              const form = document.getElementById('formCrearCita');
+              if (!form.checkValidity()) {
+                  form.classList.add('was-validated');
+                  return;
+              }
+  
+              const fecha = document.getElementById('crear-cita-fecha').value;
+              const horaInicio = document.getElementById('crear-cita-hora-inicio').value;
+              const horaInicioAmPm = document.getElementById('crear-cita-hora-inicio-ampm').value;
+              const horaFin = document.getElementById('crear-cita-hora-fin').value;
+              const horaFinAmPm = document.getElementById('crear-cita-hora-fin-ampm').value;
+  
+              const nuevaCita = {
+                  nombre: document.getElementById('crear-cita-nombre').value,
+                  fecha: fecha,
+                  horaInicio: formatearFechaHora(fecha, horaInicio, horaInicioAmPm),
+                  horaFin: formatearFechaHora(fecha, horaFin, horaFinAmPm),
+                  tipoCita: document.getElementById('crear-cita-tipo').value,
+                  estado: document.getElementById('crear-cita-estado').value,
+                  usuarioId: document.getElementById('crear-cita-usuario').value,
+                  clienteId: document.getElementById('crear-cita-cliente').value,
+                  descripcion: document.getElementById('crear-cita-descripcion').value,
+                  lugar: document.querySelector('input[name="lugar"]:checked') ? document.querySelector('input[name="lugar"]:checked').value : '', // Añadir el campo lugar
+                  enlace: document.getElementById('crear-cita-enlace-virtual').value || document.getElementById('crear-cita-lugar-especificar').value // Añadir el campo enlace si es virtual o especificar otro
+              };
+  
+              fetch('/citas', {
+                  method: 'POST',
+                  headers: { 'Content-Type': 'application/json' },
+                  body: JSON.stringify(nuevaCita)
+              })
+                  .then(response => response.json())
+                  .then(cita => {
+                      if (cita.message && cita.message.includes("El usuario ya tiene una cita en este horario")) {
+                          iziToast.error({
+                              title: 'Error',
+                              message: cita.message,
+                              position: 'topCenter',
+                          });
+                      } else if (cita) {
+                          socket.emit('citaCreada', cita);
+                          iziToast.success({
+                              title: 'Éxito',
+                              message: 'La cita ha sido creada exitosamente.',
+                              position: 'topCenter',
+                          });
+                          const crearCitaModal = bootstrap.Modal.getInstance(document.getElementById('modalCrearCita'));
+                          crearCitaModal.hide();
+                          form.classList.remove('was-validated');
+                          form.reset();
+                      } else {
+                          iziToast.error({
+                              title: 'Error',
+                              message: 'Error al crear la cita.',
+                              position: 'topCenter',
+                          });
+                      }
+                  })
+                  .catch(error => {
+                      console.error('Error al crear la cita:', error);
+                      iziToast.error({
+                          title: 'Error',
+                          message: 'Error al crear la cita.',
+                          position: 'topCenter',
+                      });
+                  });
+          });
+  
+          document.getElementById('guardarCambiosEditarCita').addEventListener('click', () => {
+              const id = document.getElementById('editar-cita-id').value;
+              const fecha = document.getElementById('editar-cita-fecha').value;
+              const horaInicio = document.getElementById('editar-cita-hora-inicio').value;
+              const horaInicioAmPm = document.getElementById('editar-cita-hora-inicio-ampm').value;
+              const horaFin = document.getElementById('editar-cita-hora-fin').value;
+              const horaFinAmPm = document.getElementById('editar-cita-hora-fin-ampm').value;
+  
+              const citaActualizada = {
+                  nombre: document.getElementById('editar-cita-nombre').value,
+                  fecha: fecha,
+                  horaInicio: formatearFechaHora(fecha, horaInicio, horaInicioAmPm),
+                  horaFin: formatearFechaHora(fecha, horaFin, horaFinAmPm),
+                  tipoCita: document.getElementById('editar-cita-tipo').value,
+                  estado: document.getElementById('editar-cita-estado').value,
+                  usuarioId: document.getElementById('editar-cita-usuario').value,
+                  clienteId: document.getElementById('editar-cita-cliente').value,
+                  descripcion: document.getElementById('editar-cita-descripcion').value
+              };
+  
+              fetch(`/citas/${id}`, {
+                  method: 'PUT',
+                  headers: { 'Content-Type': 'application/json' },
+                  body: JSON.stringify(citaActualizada)
+              })
+                  .then(response => response.json())
+                  .then(cita => {
+                      if (cita) {
+                          const fila = document.querySelector(`tr[data-id="${id}"]`);
+                          fila.innerHTML = `
+                              <td><a href="#" class="nombre-cita" data-id="${cita.id}">${cita.nombre}</a></td>
+                              <td>${formatFechaHora(cita.horaInicio, cita.horaFin)}</td>
+                              <td>${cita.tipoCita}</td>
+                              <td><span class="${obtenerClaseEstado(cita.estado)}">${cita.estado}</span></td>
+                              <td>${cita.Usuario.nombre} ${cita.Usuario.apellidoPaterno} ${cita.Usuario.apellidoMaterno}</td>
+                              <td>${cita.Cliente.nombre} ${cita.Cliente.apellidoPaterno} ${cita.Cliente.apellidoMaterno}</td>
+                              <td class="text-center">
+                                  <ul class="list-inline mb-0">
+                                      <li class="list-inline-item" data-bs-toggle="tooltip" title="Ver">
+                                          <a href="#" class="avtar avtar-xs btn-link-secondary btn-pc-default detalles-cita" data-id="${cita.id}">
+                                              <i class="ti ti-eye f-18"></i>
+                                          </a>
+                                      </li>
+                                      <li class="list-inline-item" data-bs-toggle="tooltip" title="Editar">
+                                          <a href="#" class="avtar avtar-xs btn-link-success btn-pc-default editar-cita" data-id="${cita.id}">
+                                              <i class="ti ti-edit-circle f-18"></i>
+                                          </a>
+                                      </li>
+                                      <li class="list-inline-item" data-bs-toggle="tooltip" title="Eliminar">
+                                          <a href="#" class="avtar avtar-xs btn-link-danger btn-pc-default eliminar-cita" data-id="${cita.id}">
+                                              <i class="ti ti-trash f-18"></i>
+                                          </a>
+                                      </li>
+                                  </ul>
+                              </td>
+                          `;
+                          fila.querySelector('.nombre-cita').addEventListener('click', (e) => {
+                              e.preventDefault();
+                              mostrarDetallesCita(cita);
+                          });
+                          const editarCitaModal = bootstrap.Modal.getInstance(document.getElementById('modalEditarCita'));
+                          editarCitaModal.hide();
+                      } else {
+                          alert('Error al actualizar la cita');
+                      }
+                  })
+                  .catch(error => {
+                      console.error('Error al actualizar la cita:', error);
+                  });
+          });
+  
+          const limpiarListaCitas = () => {
+              const hoy = document.getElementById('lista-citas-hoy');
+              const semana = document.getElementById('lista-citas-semana');
+              const mes = document.getElementById('lista-citas-mes');
+              if (hoy) hoy.innerHTML = '';
+              if (semana) semana.innerHTML = '';
+              if (mes) mes.innerHTML = '';
+          };
+  
+          const determinarPestana = (fechaCita) => {
+              const hoy = new Date();
+              const fecha = new Date(fechaCita);
+              const diaSemana = hoy.getDay();
+              const inicioSemana = new Date(hoy.getFullYear(), hoy.getMonth(), hoy.getDate() - diaSemana);
+              const finSemana = new Date(hoy.getFullYear(), hoy.getMonth(), hoy.getDate() + (6 - diaSemana));
+              const finMes = new Date(hoy.getFullYear(), hoy.getMonth() + 1, 0);
+  
+              if (fecha.toDateString() === hoy.toDateString()) {
+                  return 'lista-citas-hoy';
+              } else if (fecha >= inicioSemana && fecha <= finSemana) {
+                  return 'lista-citas-semana';
+              } else if (fecha <= finMes) {
+                  return 'lista-citas-mes';
+              } else {
+                  return 'lista-citas-mes';
+              }
+          };
+  
+          const renderizarCitas = (citas) => {
+              limpiarListaCitas();
+              citas.forEach(cita => {
+                  renderizarCita(cita, determinarPestana(cita.horaInicio));
+              });
+          };
+  
+          fetch('/citas')
+              .then(response => response.json())
+              .then(citas => {
+                  renderizarCitas(citas);
+              })
+              .catch(error => {
+                  console.error('Error al cargar las citas:', error);
+              });
+  
+          socket.on('citaCreada', (cita) => {
+              renderizarCita(cita, determinarPestana(cita.horaInicio));
+          });
+  
+          socket.on('citaActualizada', (cita) => {
+              const fila = document.querySelector(`tr[data-id="${cita.id}"]`);
+              fila.innerHTML = `
+                  <td><a href="#" class="nombre-cita" data-id="${cita.id}">${cita.nombre}</a></td>
+                  <td>${formatFechaHora(cita.horaInicio, cita.horaFin)}</td>
+                  <td>${cita.tipoCita}</td>
+                  <td><span class="${obtenerClaseEstado(cita.estado)}">${cita.estado}</span></td>
+                  <td>${cita.Usuario.nombre} ${cita.Usuario.apellidoPaterno} ${cita.Usuario.apellidoMaterno}</td>
+                  <td>${cita.Cliente.nombre} ${cita.Cliente.apellidoPaterno} ${cita.Cliente.apellidoMaterno}</td>
+                  <td class="text-center">
+                      <ul class="list-inline mb-0">
+                          <li class="list-inline-item" data-bs-toggle="tooltip" title="Ver">
+                              <a href="#" class="avtar avtar-xs btn-link-secondary btn-pc-default detalles-cita" data-id="${cita.id}">
+                                  <i class="ti ti-eye f-18"></i>
+                              </a>
+                          </li>
+                          <li class="list-inline-item" data-bs-toggle="tooltip" title="Editar">
+                              <a href="#" class="avtar avtar-xs btn-link-success btn-pc-default editar-cita" data-id="${cita.id}">
+                                  <i class="ti ti-edit-circle f-18"></i>
+                              </a>
+                          </li>
+                          <li class="list-inline-item" data-bs-toggle="tooltip" title="Eliminar">
+                              <a href="#" class="avtar avtar-xs btn-link-danger btn-pc-default eliminar-cita" data-id="${cita.id}">
+                                  <i class="ti ti-trash f-18"></i>
+                              </a>
+                          </li>
+                      </ul>
+                  </td>
+              `;
+              fila.querySelector('.nombre-cita').addEventListener('click', (e) => {
+                  e.preventDefault();
+                  mostrarDetallesCita(cita);
+              });
+          });
+  
+          socket.on('citaEliminada', ({ id }) => {
+              const fila = document.querySelector(`tr[data-id="${id}"]`);
+              if (fila) {
+                  fila.remove();
+              }
+          });
+  
+          socket.on('connect', () => {
+              console.log('Conectado al servidor con ID:', socket.id);
+          });
+  
+          socket.on('disconnect', () => {
+              console.log('Desconectado del servidor');
+          });
+  
+          cargarUsuariosYClientes(); // Cargar usuarios y clientes al inicio para que estén disponibles en los selectores
+      });
+  </script>
+  
+
+
+<!-- perfecto! -->
+   <!--  <script>
+      document.addEventListener('DOMContentLoaded', () => {
+          const socket = io();
+  
+          const cargarUsuariosYClientes = async () => {
+              try {
+                  const [usuariosResponse, clientesResponse] = await Promise.all([fetch('/usuarios'), fetch('/clientes')]);
+                  const usuarios = await usuariosResponse.json();
+                  const clientes = await clientesResponse.json();
+  
+                  if (usuarios && usuarios.data) {
+                      actualizarSelectUsuarios('crear-cita-usuario', usuarios.data);
+                      actualizarSelectUsuarios('editar-cita-usuario', usuarios.data);
+                  } else {
+                      console.error('La respuesta de usuarios no es un array:', usuarios);
+                  }
+  
+                  if (clientes && clientes.data) {
+                      actualizarSelectClientes('crear-cita-cliente', clientes.data);
+                      actualizarSelectClientes('editar-cita-cliente', clientes.data);
+                  } else {
+                      console.error('La respuesta de clientes no es un array:', clientes);
+                  }
+              } catch (error) {
+                  console.error('Error al cargar usuarios y clientes:', error);
+              }
+          };
+  
+          const actualizarSelectUsuarios = (selectId, usuarios) => {
+              const select = document.getElementById(selectId);
+              if (select) {
+                  select.innerHTML = '<option value="">Seleccionar</option>' + usuarios.map(usuario => `<option value="${usuario.id}">${usuario.nombre} ${usuario.apellidoPaterno} ${usuario.apellidoMaterno}</option>`).join('');
+              }
+          };
+  
+          const actualizarSelectClientes = (selectId, clientes) => {
+              const select = document.getElementById(selectId);
+              if (select) {
+                  select.innerHTML = '<option value="">Seleccionar</option>' + clientes.map(cliente => `<option value="${cliente.id}">${cliente.nombre} ${cliente.apellidoPaterno} ${cliente.apellidoMaterno}</option>`).join('');
+              }
+          };
+  
+          // Mostrar el modal de crear cliente al hacer clic en el botón "Añadir Cliente"
+          document.getElementById('botonAnadirCliente').addEventListener('click', () => {
+              const crearClienteModal = new bootstrap.Modal(document.getElementById('modalCrearCliente'));
+              crearClienteModal.show();
+          });
+  
+          // Crear cliente
+          document.getElementById('botonCrearCliente').addEventListener('click', () => {
+              const form = document.getElementById('formCrearCliente');
+              if (!form.checkValidity()) {
+                  form.classList.add('was-validated');
+                  return;
+              }
+  
+              const nombre = document.getElementById('crear-cliente-nombre').value;
+              const correoElectronico = document.getElementById('crear-cliente-correo-electronico').value;
+              const metodoImagen = document.querySelector('input[name="metodoImagen"]:checked');
+              let imagen = '';
+  
+              if (metodoImagen) {
+                  if (metodoImagen.value === 'archivo') {
+                      const imagenArchivo = document.getElementById('crear-cliente-imagen-archivo').files[0];
+                      if (!imagenArchivo) {
+                          iziToast.error({
+                              title: 'Error',
+                              message: 'Debe seleccionar un archivo de imagen.',
+                              position: 'topCenter',
+                          });
+                          return;
+                      }
+                      imagen = imagenArchivo.name;  // Solo enviamos el nombre del archivo
+                  } else if (metodoImagen.value === 'enlace') {
+                      imagen = document.getElementById('crear-cliente-imagen-enlace').value;
+                      if (!imagen) {
+                          iziToast.error({
+                              title: 'Error',
+                              message: 'Debe proporcionar un enlace de imagen.',
+                              position: 'topCenter',
+                          });
+                          return;
+                      }
+                  }
+              }
+  
+              const nuevoCliente = {
+                  nombre: nombre,
+                  apellidoPaterno: document.getElementById('crear-cliente-apellido-paterno').value,
+                  apellidoMaterno: document.getElementById('crear-cliente-apellido-materno').value,
+                  telefono: document.getElementById('crear-cliente-telefono').value,
+                  correoElectronico: correoElectronico,
+                  imagen: imagen
+              };
+  
+              fetch('/clientes', {
+                  method: 'POST',
+                  headers: {
+                      'Content-Type': 'application/json'
+                  },
+                  body: JSON.stringify(nuevoCliente)
+              })
+                  .then(response => response.json())
+                  .then(cliente => {
+                      if (cliente) {
+                          actualizarSelectClientes('crear-cita-cliente', [cliente]);
+                          actualizarSelectClientes('editar-cita-cliente', [cliente]);
+                          const crearClienteModal = bootstrap.Modal.getInstance(document.getElementById('modalCrearCliente'));
+                          crearClienteModal.hide();
+                          document.getElementById('formCrearCliente').reset();
+                          form.classList.remove('was-validated');
+                          // Reset the image selection
+                          imagenArchivoRadio.checked = false;
+                          imagenEnlaceRadio.checked = false;
+                          contenedorImagenArchivo.style.display = 'none';
+                          contenedorImagenEnlace.style.display = 'none';
+                          iziToast.success({
+                              title: 'Éxito',
+                              message: 'El cliente ha sido creado exitosamente.',
+                              position: 'topCenter',
+                          });
+                      } else {
+                          iziToast.error({
+                              title: 'Error',
+                              message: 'Error al crear el cliente.',
+                              position: 'topCenter',
+                          });
+                      }
+                  })
+                  .catch(error => {
+                      console.error('Error al crear el cliente:', error);
+                      iziToast.error({
+                          title: 'Error',
+                          message: 'Error al crear el cliente.',
+                          position: 'topCenter',
+                      });
+                  });
+          });
+  
+          const renderizarCita = (cita, listaId) => {
+              const lista = document.getElementById(listaId);
+              if (lista) {
+                  const usuario = cita.Usuario ? `${cita.Usuario.nombre} ${cita.Usuario.apellidoPaterno} ${cita.Usuario.apellidoMaterno}` : 'Desconocido';
+                  const cliente = cita.Cliente ? `${cita.Cliente.nombre} ${cita.Cliente.apellidoPaterno} ${cita.Cliente.apellidoMaterno}` : 'Desconocido';
+                  const fila = document.createElement('tr');
+                  fila.setAttribute('data-id', cita.id);
+                  fila.innerHTML = `
+                      <td><a href="#" class="nombre-cita" data-id="${cita.id}">${cita.nombre}</a></td>
+                      <td>${formatFechaHora(cita.horaInicio, cita.horaFin)}</td>
+                      <td>${cita.tipoCita}</td>
+                      <td>${cita.estado}</td>
+                      <td>${usuario}</td>
+                      <td>${cliente}</td>
+                      <td class="text-center">
+                          <ul class="list-inline mb-0">
+                              <li class="list-inline-item" data-bs-toggle="tooltip" title="Ver">
+                                  <a href="#" class="avtar avtar-xs btn-link-secondary btn-pc-default detalles-cita" data-id="${cita.id}">
+                                      <i class="ti ti-eye f-18"></i>
+                                  </a>
+                              </li>
+                              <li class="list-inline-item" data-bs-toggle="tooltip" title="Editar">
+                                  <a href="#" class="avtar avtar-xs btn-link-success btn-pc-default editar-cita" data-id="${cita.id}">
+                                      <i class="ti ti-edit-circle f-18"></i>
+                                  </a>
+                              </li>
+                              <li class="list-inline-item" data-bs-toggle="tooltip" title="Eliminar">
+                                  <a href="#" class="avtar avtar-xs btn-link-danger btn-pc-default eliminar-cita" data-id="${cita.id}">
+                                      <i class="ti ti-trash f-18"></i>
+                                  </a>
+                              </li>
+                          </ul>
+                      </td>
+                  `;
+                  lista.appendChild(fila);
+  
+                  fila.querySelector('.nombre-cita').addEventListener('click', (e) => {
+                      e.preventDefault();
+                      mostrarDetallesCita(cita);
+                  });
+  
+                  fila.querySelector('.detalles-cita').addEventListener('click', (e) => {
+                      e.preventDefault();
+                      mostrarDetallesCita(cita);
+                  });
+  
+                  fila.querySelector('.editar-cita').addEventListener('click', (e) => {
+                      e.preventDefault();
+                      mostrarEditarCita(cita);
+                  });
+  
+                  fila.querySelector('.eliminar-cita').addEventListener('click', (e) => {
+                      e.preventDefault();
+                      iziToast.question({
+                          timeout: 20000,
+                          close: false,
+                          overlay: false,
+                          displayMode: 'once',
+                          id: 'question',
+                          title: 'Confirmación',
+                          message: '¿Estás seguro de que deseas eliminar esta cita?',
+                          position: 'center',
+                          buttons: [
+                              ['<button><b>SI</b></button>', function (instance, toast) {
+                                  fetch(`/citas/${cita.id}`, { method: 'DELETE' })
+                                      .then(response => {
+                                          if (response.ok) {
+                                              socket.emit('citaEliminada', { id: cita.id });
+                                              fila.remove();
+                                              iziToast.success({
+                                                  title: 'Éxito',
+                                                  message: 'Cita eliminada correctamente.',
+                                              });
+                                          } else {
+                                              iziToast.error({
+                                                  title: 'Error',
+                                                  message: 'Error al eliminar la cita.',
+                                              });
+                                          }
+                                      })
+                                      .catch(error => {
+                                          console.error('Error al eliminar la cita:', error);
+                                          iziToast.error({
+                                              title: 'Error',
+                                              message: 'Error al eliminar la cita.',
+                                          });
+                                      });
+                                  instance.hide({ transitionOut: 'fadeOut' }, toast, 'button');
+                              }, true],
+                              ['<button>NO</button>', function (instance, toast) {
+                                  instance.hide({ transitionOut: 'fadeOut' }, toast, 'button');
+                              }],
+                          ],
+                      });
+                  });
+              }
+          };
+  
+          const formatFechaHora = (horaInicio, horaFin) => {
+              const opcionesHora = { hour: 'numeric', minute: 'numeric', hour12: true };
+              const opcionesFecha = { weekday: 'short', day: 'numeric', month: 'short', year: 'numeric' };
+              const inicio = new Date(horaInicio).toLocaleString('es-MX', opcionesHora);
+              const fin = new Date(horaFin).toLocaleString('es-MX', opcionesHora);
+              const fecha = new Date(horaInicio).toLocaleDateString('es-MX', opcionesFecha).replace(/\./g, '');
+              return `${fecha}, ${inicio} - ${fin}`;
+          };
+  
+          const mostrarDetallesCita = (cita) => {
+              document.getElementById('detalles-cita-nombre').textContent = cita.nombre;
+              document.getElementById('detalles-cita-fecha').textContent = formatFechaHora(cita.horaInicio, cita.horaFin);
+              document.getElementById('detalles-cita-tipo').textContent = cita.tipoCita;
+              document.getElementById('detalles-cita-estado').textContent = cita.estado;
+              const usuario = cita.Usuario ? `${cita.Usuario.nombre} ${cita.Usuario.apellidoPaterno} ${cita.Usuario.apellidoMaterno}` : 'Desconocido';
+              document.getElementById('detalles-cita-usuario').textContent = usuario;
+              const cliente = cita.Cliente ? `${cita.Cliente.nombre} ${cita.Cliente.apellidoPaterno} ${cita.Cliente.apellidoMaterno}` : 'Desconocido';
+              document.getElementById('detalles-cita-cliente').textContent = cliente;
+              document.getElementById('detalles-cita-descripcion').textContent = cita.descripcion || '';
+              const detallesCitaModal = new bootstrap.Modal(document.getElementById('modalDetallesCita'));
+              detallesCitaModal.show();
+          };
+  
+          const mostrarEditarCita = (cita) => {
+              cargarUsuariosYClientes();
+              document.getElementById('editar-cita-nombre').value = cita.nombre;
+              document.getElementById('editar-cita-fecha').value = cita.fecha.split('T')[0];
+              document.getElementById('editar-cita-hora-inicio').value = new Date(cita.horaInicio).toISOString().substr(11, 5);
+              document.getElementById('editar-cita-hora-fin').value = new Date(cita.horaFin).toISOString().substr(11, 5);
+              document.getElementById('editar-cita-tipo').value = cita.tipoCita;
+              document.getElementById('editar-cita-estado').value = cita.estado;
+              document.getElementById('editar-cita-usuario').value = cita.usuarioId;
+              document.getElementById('editar-cita-cliente').value = cita.clienteId;
+              document.getElementById('editar-cita-descripcion').value = cita.descripcion || '';
+              document.getElementById('editar-cita-id').value = cita.id;
+              const editarCitaModal = new bootstrap.Modal(document.getElementById('modalEditarCita'));
+              editarCitaModal.show();
+          };
+  
+          const eliminarCita = (id) => {
+              if (confirm('¿Estás seguro de que deseas eliminar esta cita?')) {
+                  fetch(`/citas/${id}`, { method: 'DELETE' })
+                      .then(response => {
+                          if (response.ok) {
+                              const fila = document.querySelector(`tr[data-id="${id}"]`);
+                              if (fila) {
+                                  fila.remove();
+                                  socket.emit('citaEliminada', { id });
+                              }
+                          } else {
+                              alert('Error al eliminar la cita');
+                          }
+                      })
+                      .catch(error => {
+                          console.error('Error al eliminar la cita:', error);
+                      });
+              }
+          };
+  
+          const formatearFechaHora = (fecha, hora, ampm) => {
+              let [hours, minutes] = hora.split(':');
+              if (ampm === 'PM' && hours !== '12') {
+                  hours = parseInt(hours, 10) + 12;
+              }
+              if (ampm === 'AM' && hours === '12') {
+                  hours = '00';
+              }
+              return `${fecha}T${hours}:${minutes}:00-06:00`;
+          };
+  
+          document.getElementById('botonCrearCita').addEventListener('click', () => {
+              const form = document.getElementById('formCrearCita');
+              if (!form.checkValidity()) {
+                  form.classList.add('was-validated');
+                  return;
+              }
+  
+              const fecha = document.getElementById('crear-cita-fecha').value;
+              const horaInicio = document.getElementById('crear-cita-hora-inicio').value;
+              const horaInicioAmPm = document.getElementById('crear-cita-hora-inicio-ampm').value;
+              const horaFin = document.getElementById('crear-cita-hora-fin').value;
+              const horaFinAmPm = document.getElementById('crear-cita-hora-fin-ampm').value;
+  
+              const nuevaCita = {
+                  nombre: document.getElementById('crear-cita-nombre').value,
+                  fecha: fecha,
+                  horaInicio: formatearFechaHora(fecha, horaInicio, horaInicioAmPm),
+                  horaFin: formatearFechaHora(fecha, horaFin, horaFinAmPm),
+                  tipoCita: document.getElementById('crear-cita-tipo').value,
+                  estado: document.getElementById('crear-cita-estado').value,
+                  usuarioId: document.getElementById('crear-cita-usuario').value,
+                  clienteId: document.getElementById('crear-cita-cliente').value,
+                  descripcion: document.getElementById('crear-cita-descripcion').value,
+                  lugar: document.querySelector('input[name="lugar"]:checked') ? document.querySelector('input[name="lugar"]:checked').value : '', // Añadir el campo lugar
+                  enlace: document.getElementById('crear-cita-enlace-virtual').value || document.getElementById('crear-cita-lugar-especificar').value // Añadir el campo enlace si es virtual o especificar otro
+              };
+  
+              fetch('/citas', {
+                  method: 'POST',
+                  headers: { 'Content-Type': 'application/json' },
+                  body: JSON.stringify(nuevaCita)
+              })
+                  .then(response => response.json())
+                  .then(cita => {
+                      if (cita) {
+                          socket.emit('citaCreada', cita);
+                          iziToast.success({
+                              title: 'Éxito',
+                              message: 'La cita ha sido creada exitosamente.',
+                              position: 'topCenter',
+                          });
+                          const crearCitaModal = bootstrap.Modal.getInstance(document.getElementById('modalCrearCita'));
+                          crearCitaModal.hide();
+                          form.classList.remove('was-validated');
+                          form.reset();
+                      } else {
+                          iziToast.error({
+                              title: 'Error',
+                              message: 'Error al crear la cita.',
+                              position: 'topCenter',
+                          });
+                      }
+                  })
+                  .catch(error => {
+                      console.error('Error al crear la cita:', error);
+                      iziToast.error({
+                          title: 'Error',
+                          message: 'Error al crear la cita.',
+                          position: 'topCenter',
+                      });
+                  });
+          });
+  
+          document.getElementById('guardarCambiosEditarCita').addEventListener('click', () => {
+              const id = document.getElementById('editar-cita-id').value;
+              const fecha = document.getElementById('editar-cita-fecha').value;
+              const horaInicio = document.getElementById('editar-cita-hora-inicio').value;
+              const horaInicioAmPm = document.getElementById('editar-cita-hora-inicio-ampm').value;
+              const horaFin = document.getElementById('editar-cita-hora-fin').value;
+              const horaFinAmPm = document.getElementById('editar-cita-hora-fin-ampm').value;
+  
+              const citaActualizada = {
+                  nombre: document.getElementById('editar-cita-nombre').value,
+                  fecha: fecha,
+                  horaInicio: formatearFechaHora(fecha, horaInicio, horaInicioAmPm),
+                  horaFin: formatearFechaHora(fecha, horaFin, horaFinAmPm),
+                  tipoCita: document.getElementById('editar-cita-tipo').value,
+                  estado: document.getElementById('editar-cita-estado').value,
+                  usuarioId: document.getElementById('editar-cita-usuario').value,
+                  clienteId: document.getElementById('editar-cita-cliente').value,
+                  descripcion: document.getElementById('editar-cita-descripcion').value
+              };
+  
+              fetch(`/citas/${id}`, {
+                  method: 'PUT',
+                  headers: { 'Content-Type': 'application/json' },
+                  body: JSON.stringify(citaActualizada)
+              })
+                  .then(response => response.json())
+                  .then(cita => {
+                      if (cita) {
+                          const fila = document.querySelector(`tr[data-id="${id}"]`);
+                          fila.innerHTML = `
+                              <td><a href="#" class="nombre-cita" data-id="${cita.id}">${cita.nombre}</a></td>
+                              <td>${formatFechaHora(cita.horaInicio, cita.horaFin)}</td>
+                              <td>${cita.tipoCita}</td>
+                              <td>${cita.estado}</td>
+                              <td>${cita.Usuario.nombre} ${cita.Usuario.apellidoPaterno} ${cita.Usuario.apellidoMaterno}</td>
+                              <td>${cita.Cliente.nombre} ${cita.Cliente.apellidoPaterno} ${cita.Cliente.apellidoMaterno}</td>
+                              <td class="text-center">
+                                  <ul class="list-inline mb-0">
+                                      <li class="list-inline-item" data-bs-toggle="tooltip" title="Ver">
+                                          <a href="#" class="avtar avtar-xs btn-link-secondary btn-pc-default detalles-cita" data-id="${cita.id}">
+                                              <i class="ti ti-eye f-18"></i>
+                                          </a>
+                                      </li>
+                                      <li class="list-inline-item" data-bs-toggle="tooltip" title="Editar">
+                                          <a href="#" class="avtar avtar-xs btn-link-success btn-pc-default editar-cita" data-id="${cita.id}">
+                                              <i class="ti ti-edit-circle f-18"></i>
+                                          </a>
+                                      </li>
+                                      <li class="list-inline-item" data-bs-toggle="tooltip" title="Eliminar">
+                                          <a href="#" class="avtar avtar-xs btn-link-danger btn-pc-default eliminar-cita" data-id="${cita.id}">
+                                              <i class="ti ti-trash f-18"></i>
+                                          </a>
+                                      </li>
+                                  </ul>
+                              </td>
+                          `;
+                          fila.querySelector('.nombre-cita').addEventListener('click', (e) => {
+                              e.preventDefault();
+                              mostrarDetallesCita(cita);
+                          });
+                          const editarCitaModal = bootstrap.Modal.getInstance(document.getElementById('modalEditarCita'));
+                          editarCitaModal.hide();
+                      } else {
+                          alert('Error al actualizar la cita');
+                      }
+                  })
+                  .catch(error => {
+                      console.error('Error al actualizar la cita:', error);
+                  });
+          });
+  
+          const limpiarListaCitas = () => {
+              const hoy = document.getElementById('lista-citas-hoy');
+              const semana = document.getElementById('lista-citas-semana');
+              const mes = document.getElementById('lista-citas-mes');
+              if (hoy) hoy.innerHTML = '';
+              if (semana) semana.innerHTML = '';
+              if (mes) mes.innerHTML = '';
+          };
+  
+          const determinarPestana = (fechaCita) => {
+              const hoy = new Date();
+              const fecha = new Date(fechaCita);
+              const diaSemana = hoy.getDay();
+              const inicioSemana = new Date(hoy.getFullYear(), hoy.getMonth(), hoy.getDate() - diaSemana);
+              const finSemana = new Date(hoy.getFullYear(), hoy.getMonth(), hoy.getDate() + (6 - diaSemana));
+              const finMes = new Date(hoy.getFullYear(), hoy.getMonth() + 1, 0);
+  
+              if (fecha.toDateString() === hoy.toDateString()) {
+                  return 'lista-citas-hoy';
+              } else if (fecha >= inicioSemana && fecha <= finSemana) {
+                  return 'lista-citas-semana';
+              } else if (fecha <= finMes) {
+                  return 'lista-citas-mes';
+              } else {
+                  return 'lista-citas-mes';
+              }
+          };
+  
+          const renderizarCitas = (citas) => {
+              limpiarListaCitas();
+              citas.forEach(cita => {
+                  renderizarCita(cita, determinarPestana(cita.horaInicio));
+              });
+          };
+  
+          fetch('/citas')
+              .then(response => response.json())
+              .then(citas => {
+                  renderizarCitas(citas);
+              })
+              .catch(error => {
+                  console.error('Error al cargar las citas:', error);
+              });
+  
+          socket.on('citaCreada', (cita) => {
+              renderizarCita(cita, determinarPestana(cita.horaInicio));
+          });
+  
+          socket.on('citaActualizada', (cita) => {
+              const fila = document.querySelector(`tr[data-id="${cita.id}"]`);
+              fila.innerHTML = `
+                  <td><a href="#" class="nombre-cita" data-id="${cita.id}">${cita.nombre}</a></td>
+                  <td>${formatFechaHora(cita.horaInicio, cita.horaFin)}</td>
+                  <td>${cita.tipoCita}</td>
+                  <td>${cita.estado}</td>
+                  <td>${cita.Usuario.nombre} ${cita.Usuario.apellidoPaterno} ${cita.Usuario.apellidoMaterno}</td>
+                  <td>${cita.Cliente.nombre} ${cita.Cliente.apellidoPaterno} ${cita.Cliente.apellidoMaterno}</td>
+                  <td class="text-center">
+                      <ul class="list-inline mb-0">
+                          <li class="list-inline-item" data-bs-toggle="tooltip" title="Ver">
+                              <a href="#" class="avtar avtar-xs btn-link-secondary btn-pc-default detalles-cita" data-id="${cita.id}">
+                                  <i class="ti ti-eye f-18"></i>
+                              </a>
+                          </li>
+                          <li class="list-inline-item" data-bs-toggle="tooltip" title="Editar">
+                              <a href="#" class="avtar avtar-xs btn-link-success btn-pc-default editar-cita" data-id="${cita.id}">
+                                  <i class="ti ti-edit-circle f-18"></i>
+                              </a>
+                          </li>
+                          <li class="list-inline-item" data-bs-toggle="tooltip" title="Eliminar">
+                              <a href="#" class="avtar avtar-xs btn-link-danger btn-pc-default eliminar-cita" data-id="${cita.id}">
+                                  <i class="ti ti-trash f-18"></i>
+                              </a>
+                          </li>
+                      </ul>
+                  </td>
+              `;
+              fila.querySelector('.nombre-cita').addEventListener('click', (e) => {
+                  e.preventDefault();
+                  mostrarDetallesCita(cita);
+              });
+          });
+  
+          socket.on('citaEliminada', ({ id }) => {
+              const fila = document.querySelector(`tr[data-id="${id}"]`);
+              if (fila) {
+                  fila.remove();
+              }
+          });
+  
+          socket.on('connect', () => {
+              console.log('Conectado al servidor con ID:', socket.id);
+          });
+  
+          socket.on('disconnect', () => {
+              console.log('Desconectado del servidor');
+          });
+  
+          cargarUsuariosYClientes(); // Cargar usuarios y clientes al inicio para que estén disponibles en los selectores
+      });
+  </script> -->
+  
+<!-- good -->
+<!--   <script>
+    document.addEventListener('DOMContentLoaded', () => {
+    const socket = io();
+
+    const cargarUsuariosYClientes = async () => {
+        try {
+            const [usuariosResponse, clientesResponse] = await Promise.all([fetch('/usuarios'), fetch('/clientes')]);
+            const usuarios = await usuariosResponse.json();
+            const clientes = await clientesResponse.json();
+
+            if (usuarios && usuarios.data) {
+                actualizarSelectUsuarios('crear-cita-usuario', usuarios.data);
+                actualizarSelectUsuarios('editar-cita-usuario', usuarios.data);
+            } else {
+                console.error('La respuesta de usuarios no es un array:', usuarios);
+            }
+
+            if (clientes && clientes.data) {
+                actualizarSelectClientes('crear-cita-cliente', clientes.data);
+                actualizarSelectClientes('editar-cita-cliente', clientes.data);
+            } else {
+                console.error('La respuesta de clientes no es un array:', clientes);
+            }
+        } catch (error) {
+            console.error('Error al cargar usuarios y clientes:', error);
+        }
+    };
+
+    const actualizarSelectUsuarios = (selectId, usuarios) => {
+        const select = document.getElementById(selectId);
+        if (select) {
+            select.innerHTML = '<option value="">Seleccionar</option>' + usuarios.map(usuario => `<option value="${usuario.id}">${usuario.nombre} ${usuario.apellidoPaterno} ${usuario.apellidoMaterno}</option>`).join('');
+        }
+    };
+
+    const actualizarSelectClientes = (selectId, clientes) => {
+        const select = document.getElementById(selectId);
+        if (select) {
+            select.innerHTML = '<option value="">Seleccionar</option>' + clientes.map(cliente => `<option value="${cliente.id}">${cliente.nombre} ${cliente.apellidoPaterno} ${cliente.apellidoMaterno}</option>`).join('');
+        }
+    };
+
+    // Mostrar el modal de crear cliente al hacer clic en el botón "Añadir Cliente"
+    document.getElementById('botonAnadirCliente').addEventListener('click', () => {
+        const crearClienteModal = new bootstrap.Modal(document.getElementById('modalCrearCliente'));
+        crearClienteModal.show();
+    });
+
+    // Crear cliente
+    document.getElementById('botonCrearCliente').addEventListener('click', () => {
+        const form = document.getElementById('formCrearCliente');
+        if (!form.checkValidity()) {
+            form.classList.add('was-validated');
+            return;
+        }
+
+        const nombre = document.getElementById('crear-cliente-nombre').value;
+        const correoElectronico = document.getElementById('crear-cliente-correo-electronico').value;
+        const metodoImagen = document.querySelector('input[name="metodoImagen"]:checked');
+        let imagen = '';
+
+        if (metodoImagen) {
+            if (metodoImagen.value === 'archivo') {
+                const imagenArchivo = document.getElementById('crear-cliente-imagen-archivo').files[0];
+                if (!imagenArchivo) {
+                    iziToast.error({
+                        title: 'Error',
+                        message: 'Debe seleccionar un archivo de imagen.',
+                        position: 'topCenter',
+                    });
+                    return;
+                }
+                imagen = imagenArchivo.name;  // Solo enviamos el nombre del archivo
+            } else if (metodoImagen.value === 'enlace') {
+                imagen = document.getElementById('crear-cliente-imagen-enlace').value;
+                if (!imagen) {
+                    iziToast.error({
+                        title: 'Error',
+                        message: 'Debe proporcionar un enlace de imagen.',
+                        position: 'topCenter',
+                    });
+                    return;
+                }
+            }
+        }
+
+        const nuevoCliente = {
+            nombre: nombre,
+            apellidoPaterno: document.getElementById('crear-cliente-apellido-paterno').value,
+            apellidoMaterno: document.getElementById('crear-cliente-apellido-materno').value,
+            telefono: document.getElementById('crear-cliente-telefono').value,
+            correoElectronico: correoElectronico,
+            imagen: imagen
+        };
+
+        fetch('/clientes', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(nuevoCliente)
+        })
+            .then(response => response.json())
+            .then(cliente => {
+                if (cliente) {
+                    actualizarSelectClientes('crear-cita-cliente', [cliente]);
+                    actualizarSelectClientes('editar-cita-cliente', [cliente]);
+                    const crearClienteModal = bootstrap.Modal.getInstance(document.getElementById('modalCrearCliente'));
+                    crearClienteModal.hide();
+                    document.getElementById('formCrearCliente').reset();
+                    form.classList.remove('was-validated');
+                    // Reset the image selection
+                    imagenArchivoRadio.checked = false;
+                    imagenEnlaceRadio.checked = false;
+                    contenedorImagenArchivo.style.display = 'none';
+                    contenedorImagenEnlace.style.display = 'none';
+                    iziToast.success({
+                        title: 'Éxito',
+                        message: 'El cliente ha sido creado exitosamente.',
+                        position: 'topCenter',
+                    });
+                } else {
+                    iziToast.error({
+                        title: 'Error',
+                        message: 'Error al crear el cliente.',
+                        position: 'topCenter',
+                    });
+                }
+            })
+            .catch(error => {
+                console.error('Error al crear el cliente:', error);
+                iziToast.error({
+                    title: 'Error',
+                    message: 'Error al crear el cliente.',
+                    position: 'topCenter',
+                });
+            });
+    });
+
+    const renderizarCita = (cita, listaId) => {
+        const lista = document.getElementById(listaId);
+        if (lista) {
+            const usuario = cita.Usuario ? `${cita.Usuario.nombre} ${cita.Usuario.apellidoPaterno} ${cita.Usuario.apellidoMaterno}` : 'Desconocido';
+            const cliente = cita.Cliente ? `${cita.Cliente.nombre} ${cita.Cliente.apellidoPaterno} ${cita.Cliente.apellidoMaterno}` : 'Desconocido';
+            const fila = document.createElement('tr');
+            fila.setAttribute('data-id', cita.id);
+            fila.innerHTML = `
+                <td>${cita.nombre}</td>
+                <td>${formatFechaHora(cita.horaInicio, cita.horaFin)}</td>
+                <td>${cita.tipoCita}</td>
+                <td>${cita.estado}</td>
+                <td>${usuario}</td>
+                <td>${cliente}</td>
+                <td class="text-center">
+                    <ul class="list-inline mb-0">
+                        <li class="list-inline-item" data-bs-toggle="tooltip" title="Ver">
+                            <a href="#" class="avtar avtar-xs btn-link-secondary btn-pc-default detalles-cita" data-id="${cita.id}">
+                                <i class="ti ti-eye f-18"></i>
+                            </a>
+                        </li>
+                        <li class="list-inline-item" data-bs-toggle="tooltip" title="Editar">
+                            <a href="#" class="avtar avtar-xs btn-link-success btn-pc-default editar-cita" data-id="${cita.id}">
+                                <i class="ti ti-edit-circle f-18"></i>
+                            </a>
+                        </li>
+                        <li class="list-inline-item" data-bs-toggle="tooltip" title="Eliminar">
+                            <a href="#" class="avtar avtar-xs btn-link-danger btn-pc-default eliminar-cita" data-id="${cita.id}">
+                                <i class="ti ti-trash f-18"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </td>
+            `;
+            lista.appendChild(fila);
+
+            fila.querySelectorAll('.detalles-cita').forEach(element => {
+                element.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    mostrarDetallesCita(cita);
+                });
+            });
+
+            fila.querySelector('.editar-cita').addEventListener('click', (e) => {
+                e.preventDefault();
+                mostrarEditarCita(cita);
+            });
+
+            fila.querySelector('.eliminar-cita').addEventListener('click', (e) => {
+                e.preventDefault();
+                iziToast.question({
+                    timeout: 20000,
+                    close: false,
+                    overlay: false,
+                    displayMode: 'once',
+                    id: 'question',
+                    title: 'Confirmación',
+                    message: '¿Estás seguro de que deseas eliminar esta cita?',
+                    position: 'center',
+                    buttons: [
+                        ['<button><b>SI</b></button>', function (instance, toast) {
+                            fetch(`/citas/${cita.id}`, { method: 'DELETE' })
+                                .then(response => {
+                                    if (response.ok) {
+                                        socket.emit('citaEliminada', { id: cita.id });
+                                        fila.remove();
+                                        iziToast.success({
+                                            title: 'Éxito',
+                                            message: 'Cita eliminada correctamente.',
+                                        });
+                                    } else {
+                                        iziToast.error({
+                                            title: 'Error',
+                                            message: 'Error al eliminar la cita.',
+                                        });
+                                    }
+                                })
+                                .catch(error => {
+                                    console.error('Error al eliminar la cita:', error);
+                                    iziToast.error({
+                                        title: 'Error',
+                                        message: 'Error al eliminar la cita.',
+                                    });
+                                });
+                            instance.hide({ transitionOut: 'fadeOut' }, toast, 'button');
+                        }, true],
+                        ['<button>NO</button>', function (instance, toast) {
+                            instance.hide({ transitionOut: 'fadeOut' }, toast, 'button');
+                        }],
+                    ],
+                });
+            });
+        }
+    };
+
+    const formatFechaHora = (horaInicio, horaFin) => {
+        const opciones = { hour: 'numeric', minute: 'numeric', hour12: true };
+        const inicio = new Date(horaInicio).toLocaleString('es-MX', opciones);
+        const fin = new Date(horaFin).toLocaleString('es-MX', opciones);
+        const fecha = new Date(horaInicio).toLocaleDateString('es-MX');
+        return `${fecha}, ${inicio} - ${fin}`;
+    };
+
+    const mostrarDetallesCita = (cita) => {
+        document.getElementById('detalles-cita-nombre').textContent = cita.nombre;
+        document.getElementById('detalles-cita-fecha').textContent = formatFechaHora(cita.horaInicio, cita.horaFin);
+        document.getElementById('detalles-cita-tipo').textContent = cita.tipoCita;
+        document.getElementById('detalles-cita-estado').textContent = cita.estado;
+        const usuario = cita.Usuario ? `${cita.Usuario.nombre} ${cita.Usuario.apellidoPaterno} ${cita.Usuario.apellidoMaterno}` : 'Desconocido';
+        document.getElementById('detalles-cita-usuario').textContent = usuario;
+        const cliente = cita.Cliente ? `${cita.Cliente.nombre} ${cita.Cliente.apellidoPaterno} ${cita.Cliente.apellidoMaterno}` : 'Desconocido';
+        document.getElementById('detalles-cita-cliente').textContent = cliente;
+        document.getElementById('detalles-cita-descripcion').textContent = cita.descripcion || '';
+        const detallesCitaModal = new bootstrap.Modal(document.getElementById('modalDetallesCita'));
+        detallesCitaModal.show();
+    };
+
+    const mostrarEditarCita = (cita) => {
+        cargarUsuariosYClientes();
+        document.getElementById('editar-cita-nombre').value = cita.nombre;
+        document.getElementById('editar-cita-fecha').value = cita.fecha.split('T')[0];
+        document.getElementById('editar-cita-hora-inicio').value = new Date(cita.horaInicio).toISOString().substr(11, 5);
+        document.getElementById('editar-cita-hora-fin').value = new Date(cita.horaFin).toISOString().substr(11, 5);
+        document.getElementById('editar-cita-tipo').value = cita.tipoCita;
+        document.getElementById('editar-cita-estado').value = cita.estado;
+        document.getElementById('editar-cita-usuario').value = cita.usuarioId;
+        document.getElementById('editar-cita-cliente').value = cita.clienteId;
+        document.getElementById('editar-cita-descripcion').value = cita.descripcion || '';
+        document.getElementById('editar-cita-id').value = cita.id;
+        const editarCitaModal = new bootstrap.Modal(document.getElementById('modalEditarCita'));
+        editarCitaModal.show();
+    };
+
+    const eliminarCita = (id) => {
+        if (confirm('¿Estás seguro de que deseas eliminar esta cita?')) {
+            fetch(`/citas/${id}`, { method: 'DELETE' })
+                .then(response => {
+                    if (response.ok) {
+                        const fila = document.querySelector(`tr[data-id="${id}"]`);
+                        if (fila) {
+                            fila.remove();
+                            socket.emit('citaEliminada', { id });
+                        }
+                    } else {
+                        alert('Error al eliminar la cita');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error al eliminar la cita:', error);
+                });
+        }
+    };
+
+    const formatearFechaHora = (fecha, hora, ampm) => {
+        let [hours, minutes] = hora.split(':');
+        if (ampm === 'PM' && hours !== '12') {
+            hours = parseInt(hours, 10) + 12;
+        }
+        if (ampm === 'AM' && hours === '12') {
+            hours = '00';
+        }
+        return `${fecha}T${hours}:${minutes}:00-06:00`;
+    };
+
+    document.getElementById('botonCrearCita').addEventListener('click', () => {
+        const form = document.getElementById('formCrearCita');
+        if (!form.checkValidity()) {
+            form.classList.add('was-validated');
+            return;
+        }
+
+        const fecha = document.getElementById('crear-cita-fecha').value;
+        const horaInicio = document.getElementById('crear-cita-hora-inicio').value;
+        const horaInicioAmPm = document.getElementById('crear-cita-hora-inicio-ampm').value;
+        const horaFin = document.getElementById('crear-cita-hora-fin').value;
+        const horaFinAmPm = document.getElementById('crear-cita-hora-fin-ampm').value;
+
+        const nuevaCita = {
+            nombre: document.getElementById('crear-cita-nombre').value,
+            fecha: fecha,
+            horaInicio: formatearFechaHora(fecha, horaInicio, horaInicioAmPm),
+            horaFin: formatearFechaHora(fecha, horaFin, horaFinAmPm),
+            tipoCita: document.getElementById('crear-cita-tipo').value,
+            estado: document.getElementById('crear-cita-estado').value,
+            usuarioId: document.getElementById('crear-cita-usuario').value,
+            clienteId: document.getElementById('crear-cita-cliente').value,
+            descripcion: document.getElementById('crear-cita-descripcion').value,
+            lugar: document.querySelector('input[name="lugar"]:checked') ? document.querySelector('input[name="lugar"]:checked').value : '', // Añadir el campo lugar
+            enlace: document.getElementById('crear-cita-enlace-virtual').value || document.getElementById('crear-cita-lugar-especificar').value // Añadir el campo enlace si es virtual o especificar otro
+        };
+
+        fetch('/citas', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(nuevaCita)
+        })
+            .then(response => response.json())
+            .then(cita => {
+                if (cita) {
+                    socket.emit('citaCreada', cita);
+                    iziToast.success({
+                        title: 'Éxito',
+                        message: 'La cita ha sido creada exitosamente.',
+                        position: 'topCenter',
+                    });
+                    const crearCitaModal = bootstrap.Modal.getInstance(document.getElementById('modalCrearCita'));
+                    crearCitaModal.hide();
+                    form.classList.remove('was-validated');
+                    form.reset();
+                } else {
+                    iziToast.error({
+                        title: 'Error',
+                        message: 'Error al crear la cita.',
+                        position: 'topCenter',
+                    });
+                }
+            })
+            .catch(error => {
+                console.error('Error al crear la cita:', error);
+                iziToast.error({
+                    title: 'Error',
+                    message: 'Error al crear la cita.',
+                    position: 'topCenter',
+                });
+            });
+    });
+
+    document.getElementById('guardarCambiosEditarCita').addEventListener('click', () => {
+        const id = document.getElementById('editar-cita-id').value;
+        const fecha = document.getElementById('editar-cita-fecha').value;
+        const horaInicio = document.getElementById('editar-cita-hora-inicio').value;
+        const horaInicioAmPm = document.getElementById('editar-cita-hora-inicio-ampm').value;
+        const horaFin = document.getElementById('editar-cita-hora-fin').value;
+        const horaFinAmPm = document.getElementById('editar-cita-hora-fin-ampm').value;
+
+        const citaActualizada = {
+            nombre: document.getElementById('editar-cita-nombre').value,
+            fecha: fecha,
+            horaInicio: formatearFechaHora(fecha, horaInicio, horaInicioAmPm),
+            horaFin: formatearFechaHora(fecha, horaFin, horaFinAmPm),
+            tipoCita: document.getElementById('editar-cita-tipo').value,
+            estado: document.getElementById('editar-cita-estado').value,
+            usuarioId: document.getElementById('editar-cita-usuario').value,
+            clienteId: document.getElementById('editar-cita-cliente').value,
+            descripcion: document.getElementById('editar-cita-descripcion').value
+        };
+
+        fetch(`/citas/${id}`, {
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(citaActualizada)
+        })
+            .then(response => response.json())
+            .then(cita => {
+                if (cita) {
+                    const fila = document.querySelector(`tr[data-id="${id}"]`);
+                    fila.innerHTML = `
+                        <td>${cita.nombre}</td>
+                        <td>${formatFechaHora(cita.horaInicio, cita.horaFin)}</td>
+                        <td>${cita.tipoCita}</td>
+                        <td>${cita.estado}</td>
+                        <td>${cita.Usuario.nombre} ${cita.Usuario.apellidoPaterno} ${cita.Usuario.apellidoMaterno}</td>
+                        <td>${cita.Cliente.nombre} ${cita.Cliente.apellidoPaterno} ${cita.Cliente.apellidoMaterno}</td>
+                        <td class="text-center">
+                            <ul class="list-inline mb-0">
+                                <li class="list-inline-item" data-bs-toggle="tooltip" title="Ver">
+                                    <a href="#" class="avtar avtar-xs btn-link-secondary btn-pc-default detalles-cita" data-id="${cita.id}">
+                                        <i class="ti ti-eye f-18"></i>
+                                    </a>
+                                </li>
+                                <li class="list-inline-item" data-bs-toggle="tooltip" title="Editar">
+                                    <a href="#" class="avtar avtar-xs btn-link-success btn-pc-default editar-cita" data-id="${cita.id}">
+                                        <i class="ti ti-edit-circle f-18"></i>
+                                    </a>
+                                </li>
+                                <li class="list-inline-item" data-bs-toggle="tooltip" title="Eliminar">
+                                    <a href="#" class="avtar avtar-xs btn-link-danger btn-pc-default eliminar-cita" data-id="${cita.id}">
+                                        <i class="ti ti-trash f-18"></i>
+                                    </a>
+                                </li>
+                            </ul>
+                        </td>
+                    `;
+                    const editarCitaModal = bootstrap.Modal.getInstance(document.getElementById('modalEditarCita'));
+                    editarCitaModal.hide();
+                } else {
+                    alert('Error al actualizar la cita');
+                }
+            })
+            .catch(error => {
+                console.error('Error al actualizar la cita:', error);
+            });
+    });
+
+    const limpiarListaCitas = () => {
+        const hoy = document.getElementById('lista-citas-hoy');
+        const semana = document.getElementById('lista-citas-semana');
+        const mes = document.getElementById('lista-citas-mes');
+        if (hoy) hoy.innerHTML = '';
+        if (semana) semana.innerHTML = '';
+        if (mes) mes.innerHTML = '';
+    };
+
+    const determinarPestana = (fechaCita) => {
+        const hoy = new Date();
+        const fecha = new Date(fechaCita);
+        const diaSemana = hoy.getDay();
+        const inicioSemana = new Date(hoy.getFullYear(), hoy.getMonth(), hoy.getDate() - diaSemana);
+        const finSemana = new Date(hoy.getFullYear(), hoy.getMonth(), hoy.getDate() + (6 - diaSemana));
+        const finMes = new Date(hoy.getFullYear(), hoy.getMonth() + 1, 0);
+
+        if (fecha.toDateString() === hoy.toDateString()) {
+            return 'lista-citas-hoy';
+        } else if (fecha >= inicioSemana && fecha <= finSemana) {
+            return 'lista-citas-semana';
+        } else if (fecha <= finMes) {
+            return 'lista-citas-mes';
+        } else {
+            return 'lista-citas-mes';
+        }
+    };
+
+    const renderizarCitas = (citas) => {
+        limpiarListaCitas();
+        citas.forEach(cita => {
+            renderizarCita(cita, determinarPestana(cita.horaInicio));
+        });
+    };
+
+    fetch('/citas')
+        .then(response => response.json())
+        .then(citas => {
+            renderizarCitas(citas);
+        })
+        .catch(error => {
+            console.error('Error al cargar las citas:', error);
+        });
+
+    socket.on('citaCreada', (cita) => {
+        renderizarCita(cita, determinarPestana(cita.horaInicio));
+    });
+
+    socket.on('citaActualizada', (cita) => {
+        const fila = document.querySelector(`tr[data-id="${cita.id}"]`);
+        fila.innerHTML = `
+            <td>${cita.nombre}</td>
+            <td>${formatFechaHora(cita.horaInicio, cita.horaFin)}</td>
+            <td>${cita.tipoCita}</td>
+            <td>${cita.estado}</td>
+            <td>${cita.Usuario.nombre} ${cita.Usuario.apellidoPaterno} ${cita.Usuario.apellidoMaterno}</td>
+            <td>${cita.Cliente.nombre} ${cita.Cliente.apellidoPaterno} ${cita.Cliente.apellidoMaterno}</td>
+            <td class="text-center">
+                <ul class="list-inline mb-0">
+                    <li class="list-inline-item" data-bs-toggle="tooltip" title="Ver">
+                        <a href="#" class="avtar avtar-xs btn-link-secondary btn-pc-default detalles-cita" data-id="${cita.id}">
+                            <i class="ti ti-eye f-18"></i>
+                        </a>
+                    </li>
+                    <li class="list-inline-item" data-bs-toggle="tooltip" title="Editar">
+                        <a href="#" class="avtar avtar-xs btn-link-success btn-pc-default editar-cita" data-id="${cita.id}">
+                            <i class="ti ti-edit-circle f-18"></i>
+                        </a>
+                    </li>
+                    <li class="list-inline-item" data-bs-toggle="tooltip" title="Eliminar">
+                        <a href="#" class="avtar avtar-xs btn-link-danger btn-pc-default eliminar-cita" data-id="${cita.id}">
+                            <i class="ti ti-trash f-18"></i>
+                        </a>
+                    </li>
+                </ul>
+            </td>
+        `;
+    });
+
+    socket.on('citaEliminada', ({ id }) => {
+        const fila = document.querySelector(`tr[data-id="${id}"]`);
+        if (fila) {
+            fila.remove();
+        }
+    });
+
+    socket.on('connect', () => {
+        console.log('Conectado al servidor con ID:', socket.id);
+    });
+
+    socket.on('disconnect', () => {
+        console.log('Desconectado del servidor');
+    });
+
+    cargarUsuariosYClientes(); // Cargar usuarios y clientes al inicio para que estén disponibles en los selectores
+});
+
+  </script> -->
+      
+
+    <!-- Original -->
+    <!-- <script>
+      document.addEventListener('DOMContentLoaded', () => {
+          const socket = io();
+  
+          const cargarUsuariosYClientes = async () => {
+              try {
+                  const [usuariosResponse, clientesResponse] = await Promise.all([fetch('/usuarios'), fetch('/clientes')]);
+                  const usuarios = await usuariosResponse.json();
+                  const clientes = await clientesResponse.json();
+  
+                  if (usuarios && usuarios.data) {
+                      actualizarSelectUsuarios('crear-cita-usuario', usuarios.data);
+                      actualizarSelectUsuarios('editar-cita-usuario', usuarios.data);
+                  } else {
+                      console.error('La respuesta de usuarios no es un array:', usuarios);
+                  }
+  
+                  if (clientes && clientes.data) {
+                      actualizarSelectClientes('crear-cita-cliente', clientes.data);
+                      actualizarSelectClientes('editar-cita-cliente', clientes.data);
+                  } else {
+                      console.error('La respuesta de clientes no es un array:', clientes);
+                  }
+              } catch (error) {
+                  console.error('Error al cargar usuarios y clientes:', error);
+              }
+          };
+  
+          const actualizarSelectUsuarios = (selectId, usuarios) => {
+              const select = document.getElementById(selectId);
+              if (select) {
+                  select.innerHTML = '<option value="">Seleccionar</option>' + usuarios.map(usuario => `<option value="${usuario.id}">${usuario.nombre} ${usuario.apellidoPaterno} ${usuario.apellidoMaterno}</option>`).join('');
+              }
+          };
+  
+          const actualizarSelectClientes = (selectId, clientes) => {
+              const select = document.getElementById(selectId);
+              if (select) {
+                  select.innerHTML = '<option value="">Seleccionar</option>' + clientes.map(cliente => `<option value="${cliente.id}">${cliente.nombre} ${cliente.apellidoPaterno} ${cliente.apellidoMaterno}</option>`).join('');
+              }
+          };
+          // Mostrar el modal de crear cliente al hacer clic en el botón "Añadir Cliente"
+          document.getElementById('botonAnadirCliente').addEventListener('click', () => {
+              const crearClienteModal = new bootstrap.Modal(document.getElementById('modalCrearCliente'));
+              crearClienteModal.show();
+          });
+      
+          // Crear cliente
+          document.getElementById('botonCrearCliente').addEventListener('click', () => {
+              const nuevoCliente = {
+                  nombre: document.getElementById('crear-cliente-nombre').value,
+                  apellidoPaterno: document.getElementById('crear-cliente-apellido-paterno').value,
+                  apellidoMaterno: document.getElementById('crear-cliente-apellido-materno').value,
+                  telefono: document.getElementById('crear-cliente-telefono').value,
+                  correoElectronico: document.getElementById('crear-cliente-correo-electronico').value,
+                  imagen: document.getElementById('crear-cliente-imagen').files[0]
+              };
+      
+              fetch('/clientes', {
+                  method: 'POST',
+                  headers: { 'Content-Type': 'application/json' },
+                  body: JSON.stringify(nuevoCliente)
+              })
+                  .then(response => response.json())
+                  .then(cliente => {
+                      if (cliente) {
+                          // Actualizar el select de clientes
+                          actualizarSelectClientes('crear-cita-cliente', [cliente]);
+                          actualizarSelectClientes('editar-cita-cliente', [cliente]);
+                          const crearClienteModal = bootstrap.Modal.getInstance(document.getElementById('modalCrearCliente'));
+                          crearClienteModal.hide();
+                          document.getElementById('formCrearCliente').reset();
+                      } else {
+                          alert('Error al crear el cliente');
+                      }
+                  })
+                  .catch(error => {
+                      console.error('Error al crear el cliente:', error);
+                  });
+          });
+  
+          const renderizarCita = (cita, listaId) => {
+              const lista = document.getElementById(listaId);
+              if (lista) {
+                  const usuario = cita.Usuario ? `${cita.Usuario.nombre} ${cita.Usuario.apellidoPaterno} ${cita.Usuario.apellidoMaterno}` : 'Desconocido';
+                  const cliente = cita.Cliente ? `${cita.Cliente.nombre} ${cita.Cliente.apellidoPaterno} ${cita.Cliente.apellidoMaterno}` : 'Desconocido';
+                  const fila = document.createElement('tr');
+                  fila.setAttribute('data-id', cita.id);
+                  fila.innerHTML = `
+                      <td>${cita.nombre}</td>
+                      <td>${new Date(cita.horaInicio).toLocaleString()} - ${new Date(cita.horaFin).toLocaleString()}</td>
+                      <td>${cita.tipoCita}</td>
+                      <td>${cita.estado}</td>
+                      <td>${usuario}</td>
+                      <td>${cliente}</td>
+                      <td class="text-center">
+                          <ul class="list-inline mb-0">
+                              <li class="list-inline-item" data-bs-toggle="tooltip" title="Ver">
+                                  <a href="#" class="avtar avtar-xs btn-link-secondary btn-pc-default detalles-cita" data-id="${cita.id}">
+                                      <i class="ti ti-eye f-18"></i>
+                                  </a>
+                              </li>
+                              <li class="list-inline-item" data-bs-toggle="tooltip" title="Editar">
+                                  <a href="#" class="avtar avtar-xs btn-link-success btn-pc-default editar-cita" data-id="${cita.id}">
+                                      <i class="ti ti-edit-circle f-18"></i>
+                                  </a>
+                              </li>
+                              <li class="list-inline-item" data-bs-toggle="tooltip" title="Eliminar">
+                                  <a href="#" class="avtar avtar-xs btn-link-danger btn-pc-default eliminar-cita" data-id="${cita.id}">
+                                      <i class="ti ti-trash f-18"></i>
+                                  </a>
+                              </li>
+                          </ul>
+                      </td>
+                  `;
+                  lista.appendChild(fila);
+  
+                  fila.querySelectorAll('.detalles-cita').forEach(element => {
+                      element.addEventListener('click', (e) => {
+                          e.preventDefault();
+                          mostrarDetallesCita(cita);
+                      });
+                  });
+  
+                  fila.querySelector('.editar-cita').addEventListener('click', (e) => {
+                      e.preventDefault();
+                      mostrarEditarCita(cita);
+                  });
+  
+                  fila.querySelector('.eliminar-cita').addEventListener('click', (e) => {
+                      e.preventDefault();
+                      iziToast.question({
+                          timeout: 20000,
+                          close: false,
+                          overlay: false,
+                          displayMode: 'once',
+                          id: 'question',
+                          title: 'Confirmación',
+                          message: '¿Estás seguro de que deseas eliminar esta cita?',
+                          position: 'center',
+                          buttons: [
+                              ['<button><b>SI</b></button>', function (instance, toast) {
+                                  fetch(`/citas/${cita.id}`, { method: 'DELETE' })
+                                      .then(response => {
+                                          if (response.ok) {
+                                              socket.emit('citaEliminada', { id: cita.id });
+                                              fila.remove();
+                                              iziToast.success({
+                                                  title: 'Éxito',
+                                                  message: 'Cita eliminada correctamente.',
+                                              });
+                                          } else {
+                                              iziToast.error({
+                                                  title: 'Error',
+                                                  message: 'Error al eliminar la cita.',
+                                              });
+                                          }
+                                      })
+                                      .catch(error => {
+                                          console.error('Error al eliminar la cita:', error);
+                                          iziToast.error({
+                                              title: 'Error',
+                                              message: 'Error al eliminar la cita.',
+                                          });
+                                      });
+                                  instance.hide({ transitionOut: 'fadeOut' }, toast, 'button');
+                              }, true],
+                              ['<button>NO</button>', function (instance, toast) {
+                                  instance.hide({ transitionOut: 'fadeOut' }, toast, 'button');
+                              }],
+                          ],
+                      });
+                  });
+              }
+          };
+  
+          const mostrarDetallesCita = (cita) => {
+              document.getElementById('detalles-cita-nombre').textContent = cita.nombre;
+              document.getElementById('detalles-cita-fecha').textContent = `${new Date(cita.horaInicio).toLocaleString()} - ${new Date(cita.horaFin).toLocaleString()}`;
+              document.getElementById('detalles-cita-tipo').textContent = cita.tipoCita;
+              document.getElementById('detalles-cita-estado').textContent = cita.estado;
+              const usuario = cita.Usuario ? `${cita.Usuario.nombre} ${cita.Usuario.apellidoPaterno} ${cita.Usuario.apellidoMaterno}` : 'Desconocido';
+              document.getElementById('detalles-cita-usuario').textContent = usuario;
+              const cliente = cita.Cliente ? `${cita.Cliente.nombre} ${cita.Cliente.apellidoPaterno} ${cita.Cliente.apellidoMaterno}` : 'Desconocido';
+              document.getElementById('detalles-cita-cliente').textContent = cliente;
+              document.getElementById('detalles-cita-descripcion').textContent = cita.descripcion || '';
+              const detallesCitaModal = new bootstrap.Modal(document.getElementById('modalDetallesCita'));
+              detallesCitaModal.show();
+          };
+  
+          const mostrarEditarCita = (cita) => {
+              cargarUsuariosYClientes();
+              document.getElementById('editar-cita-nombre').value = cita.nombre;
+              document.getElementById('editar-cita-fecha').value = cita.fecha.split('T')[0];
+              document.getElementById('editar-cita-hora-inicio').value = new Date(cita.horaInicio).toISOString().substr(11, 5);
+              document.getElementById('editar-cita-hora-fin').value = new Date(cita.horaFin).toISOString().substr(11, 5);
+              document.getElementById('editar-cita-tipo').value = cita.tipoCita;
+              document.getElementById('editar-cita-estado').value = cita.estado;
+              document.getElementById('editar-cita-usuario').value = cita.usuarioId;
+              document.getElementById('editar-cita-cliente').value = cita.clienteId;
+              document.getElementById('editar-cita-descripcion').value = cita.descripcion || '';
+              document.getElementById('editar-cita-id').value = cita.id;
+              const editarCitaModal = new bootstrap.Modal(document.getElementById('modalEditarCita'));
+              editarCitaModal.show();
+          };
+  
+          const eliminarCita = (id) => {
+              if (confirm('¿Estás seguro de que deseas eliminar esta cita?')) {
+                  fetch(`/citas/${id}`, { method: 'DELETE' })
+                      .then(response => {
+                          if (response.ok) {
+                              const fila = document.querySelector(`tr[data-id="${id}"]`);
+                              if (fila) {
+                                  fila.remove();
+                                  socket.emit('citaEliminada', { id });
+                              }
+                          } else {
+                              alert('Error al eliminar la cita');
+                          }
+                      })
+                      .catch(error => {
+                          console.error('Error al eliminar la cita:', error);
+                      });
+              }
+          };
+  
+          const formatearFechaHora = (fecha, hora) => {
+              const [year, month, day] = fecha.split('-');
+              const [hours, minutes] = hora.split(':');
+              return new Date(Date.UTC(year, month - 1, day, hours, minutes));
+          };
+  
+          document.getElementById('botonCrearCita').addEventListener('click', () => {
+              const fecha = document.getElementById('crear-cita-fecha').value;
+              const horaInicio = document.getElementById('crear-cita-hora-inicio').value;
+              const horaFin = document.getElementById('crear-cita-hora-fin').value;
+  
+              const nuevaCita = {
+                  nombre: document.getElementById('crear-cita-nombre').value,
+                  fecha: fecha,
+                  horaInicio: formatearFechaHora(fecha, horaInicio),
+                  horaFin: formatearFechaHora(fecha, horaFin),
+                  tipoCita: document.getElementById('crear-cita-tipo').value,
+                  estado: document.getElementById('crear-cita-estado').value,
+                  usuarioId: document.getElementById('crear-cita-usuario').value,
+                  clienteId: document.getElementById('crear-cita-cliente').value,
+                  descripcion: document.getElementById('crear-cita-descripcion').value,
+                  lugar: document.getElementById('crear-cita-lugar').value // Añadir el campo lugar
+              };
+  
+              fetch('/citas', {
+                  method: 'POST',
+                  headers: { 'Content-Type': 'application/json' },
+                  body: JSON.stringify(nuevaCita)
+              })
+                  .then(response => response.json())
+                  .then(cita => {
+                      if (cita) {
+                          socket.emit('citaCreada', cita);
+                          renderizarCita(cita, determinarPestana(cita.horaInicio));
+                          document.getElementById('formCrearCita').reset();
+                          const crearCitaModal = bootstrap.Modal.getInstance(document.getElementById('modalCrearCita'));
+                          crearCitaModal.hide();
+                      } else {
+                          alert('Error al crear la cita');
+                      }
+                  })
+                  .catch(error => {
+                      console.error('Error al crear la cita:', error);
+                  });
+          });
+  
+          document.getElementById('guardarCambiosEditarCita').addEventListener('click', () => {
+              const id = document.getElementById('editar-cita-id').value;
+              const fecha = document.getElementById('editar-cita-fecha').value;
+              const horaInicio = document.getElementById('editar-cita-hora-inicio').value;
+              const horaFin = document.getElementById('editar-cita-hora-fin').value;
+  
+              const citaActualizada = {
+                  nombre: document.getElementById('editar-cita-nombre').value,
+                  fecha: fecha,
+                  horaInicio: formatearFechaHora(fecha, horaInicio),
+                  horaFin: formatearFechaHora(fecha, horaFin),
+                  tipoCita: document.getElementById('editar-cita-tipo').value,
+                  estado: document.getElementById('editar-cita-estado').value,
+                  usuarioId: document.getElementById('editar-cita-usuario').value,
+                  clienteId: document.getElementById('editar-cita-cliente').value,
+                  descripcion: document.getElementById('editar-cita-descripcion').value
+              };
+  
+              fetch(`/citas/${id}`, {
+                  method: 'PUT',
+                  headers: { 'Content-Type': 'application/json' },
+                  body: JSON.stringify(citaActualizada)
+              })
+                  .then(response => response.json())
+                  .then(cita => {
+                      if (cita) {
+                          const fila = document.querySelector(`tr[data-id="${id}"]`);
+                          fila.innerHTML = `
+                              <td>${cita.nombre}</td>
+                              <td>${new Date(cita.horaInicio).toLocaleString()} - ${new Date(cita.horaFin).toLocaleString()}</td>
+                              <td>${cita.tipoCita}</td>
+                              <td>${cita.estado}</td>
+                              <td>${cita.Usuario.nombre} ${cita.Usuario.apellidoPaterno} ${cita.Usuario.apellidoMaterno}</td>
+                              <td>${cita.Cliente.nombre} ${cita.Cliente.apellidoPaterno} ${cita.Cliente.apellidoMaterno}</td>
+                              <td class="text-center">
+                                  <ul class="list-inline mb-0">
+                                      <li class="list-inline-item" data-bs-toggle="tooltip" title="Ver">
+                                          <a href="#" class="avtar avtar-xs btn-link-secondary btn-pc-default detalles-cita" data-id="${cita.id}">
+                                              <i class="ti ti-eye f-18"></i>
+                                          </a>
+                                      </li>
+                                      <li class="list-inline-item" data-bs-toggle="tooltip" title="Editar">
+                                          <a href="#" class="avtar avtar-xs btn-link-success btn-pc-default editar-cita" data-id="${cita.id}">
+                                              <i class="ti ti-edit-circle f-18"></i>
+                                          </a>
+                                      </li>
+                                      <li class="list-inline-item" data-bs-toggle="tooltip" title="Eliminar">
+                                          <a href="#" class="avtar avtar-xs btn-link-danger btn-pc-default eliminar-cita" data-id="${cita.id}">
+                                              <i class="ti ti-trash f-18"></i>
+                                          </a>
+                                      </li>
+                                  </ul>
+                              </td>
+                          `;
+                          const editarCitaModal = bootstrap.Modal.getInstance(document.getElementById('modalEditarCita'));
+                          editarCitaModal.hide();
+                      } else {
+                          alert('Error al actualizar la cita');
+                      }
+                  })
+                  .catch(error => {
+                      console.error('Error al actualizar la cita:', error);
+                  });
+          });
+  
+          const limpiarListaCitas = () => {
+              const hoy = document.getElementById('lista-citas-hoy');
+              const semana = document.getElementById('lista-citas-semana');
+              const mes = document.getElementById('lista-citas-mes');
+              if (hoy) hoy.innerHTML = '';
+              if (semana) semana.innerHTML = '';
+              if (mes) mes.innerHTML = '';
+          };
+  
+          const determinarPestana = (fechaCita) => {
+              const hoy = new Date();
+              const fecha = new Date(fechaCita);
+              const diaSemana = hoy.getDay();
+              const inicioSemana = new Date(hoy.getFullYear(), hoy.getMonth(), hoy.getDate() - diaSemana);
+              const finSemana = new Date(hoy.getFullYear(), hoy.getMonth(), hoy.getDate() + (6 - diaSemana));
+              const finMes = new Date(hoy.getFullYear(), hoy.getMonth() + 1, 0);
+  
+              if (fecha.toDateString() === hoy.toDateString()) {
+                  return 'lista-citas-hoy';
+              } else if (fecha >= inicioSemana && fecha <= finSemana) {
+                  return 'lista-citas-semana';
+              } else if (fecha <= finMes) {
+                  return 'lista-citas-mes';
+              } else {
+                  return 'lista-citas-mes';
+              }
+          };
+  
+          const renderizarCitas = (citas) => {
+              limpiarListaCitas();
+              citas.forEach(cita => {
+                  renderizarCita(cita, determinarPestana(cita.horaInicio));
+              });
+          };
+  
+          fetch('/citas')
+              .then(response => response.json())
+              .then(citas => {
+                  renderizarCitas(citas);
+              })
+              .catch(error => {
+                  console.error('Error al cargar las citas:', error);
+              });
+  
+          socket.on('citaCreada', (cita) => {
+              renderizarCita(cita, determinarPestana(cita.horaInicio));
+          });
+  
+          socket.on('citaActualizada', (cita) => {
+              const fila = document.querySelector(`tr[data-id="${cita.id}"]`);
+              fila.innerHTML = `
+                  <td>${cita.nombre}</td>
+                  <td>${new Date(cita.horaInicio).toLocaleString()} - ${new Date(cita.horaFin).toLocaleString()}</td>
+                  <td>${cita.tipoCita}</td>
+                  <td>${cita.estado}</td>
+                  <td>${cita.Usuario.nombre} ${cita.Usuario.apellidoPaterno} ${cita.Usuario.apellidoMaterno}</td>
+                  <td>${cita.Cliente.nombre} ${cita.Cliente.apellidoPaterno} ${cita.Cliente.apellidoMaterno}</td>
+                  <td class="text-center">
+                      <ul class="list-inline mb-0">
+                          <li class="list-inline-item" data-bs-toggle="tooltip" title="Ver">
+                              <a href="#" class="avtar avtar-xs btn-link-secondary btn-pc-default detalles-cita" data-id="${cita.id}">
+                                  <i class="ti ti-eye f-18"></i>
+                              </a>
+                          </li>
+                          <li class="list-inline-item" data-bs-toggle="tooltip" title="Editar">
+                              <a href="#" class="avtar avtar-xs btn-link-success btn-pc-default editar-cita" data-id="${cita.id}">
+                                  <i class="ti ti-edit-circle f-18"></i>
+                              </a>
+                          </li>
+                          <li class="list-inline-item" data-bs-toggle="tooltip" title="Eliminar">
+                              <a href="#" class="avtar avtar-xs btn-link-danger btn-pc-default eliminar-cita" data-id="${cita.id}">
+                                  <i class="ti ti-trash f-18"></i>
+                              </a>
+                          </li>
+                      </ul>
+                  </td>
+              `;
+          });
+  
+          socket.on('citaEliminada', ({ id }) => {
+              const fila = document.querySelector(`tr[data-id="${id}"]`);
+              if (fila) {
+                  fila.remove();
+              }
+          });
+  
+          socket.on('connect', () => {
+              console.log('Conectado al servidor con ID:', socket.id);
+          });
+  
+          socket.on('disconnect', () => {
+              console.log('Desconectado del servidor');
+          });
+  
+          cargarUsuariosYClientes(); // Cargar usuarios y clientes al inicio para que estén disponibles en los selectores
+      });
+    </script> -->
+  
+  
+  
+      
+  
+    
+  
+  
+
+    <!-- Script estable -->
+    <!-- <script>
+      document.addEventListener('DOMContentLoaded', () => {
+          const socket = io();
+  
+          const cargarUsuariosYClientes = async () => {
+              try {
+                  const [usuariosResponse, clientesResponse] = await Promise.all([fetch('/usuarios'), fetch('/clientes')]);
+                  const usuarios = await usuariosResponse.json();
+                  const clientes = await clientesResponse.json();
+  
+                  if (usuarios && usuarios.data) {
+                      actualizarSelectUsuarios('crear-cita-usuario', usuarios.data);
+                      actualizarSelectUsuarios('editar-cita-usuario', usuarios.data);
+                  } else {
+                      console.error('La respuesta de usuarios no es un array:', usuarios);
+                  }
+  
+                  if (clientes && clientes.data) {
+                      actualizarSelectClientes('crear-cita-cliente', clientes.data);
+                      actualizarSelectClientes('editar-cita-cliente', clientes.data);
+                  } else {
+                      console.error('La respuesta de clientes no es un array:', clientes);
+                  }
+              } catch (error) {
+                  console.error('Error al cargar usuarios y clientes:', error);
+              }
+          };
+  
+          const actualizarSelectUsuarios = (selectId, usuarios) => {
+              const select = document.getElementById(selectId);
+              if (select) {
+                  select.innerHTML = usuarios.map(usuario => `<option value="${usuario.id}">${usuario.nombre} ${usuario.apellidoPaterno} ${usuario.apellidoMaterno}</option>`).join('');
+              }
+          };
+  
+          const actualizarSelectClientes = (selectId, clientes) => {
+              const select = document.getElementById(selectId);
+              if (select) {
+                  select.innerHTML = clientes.map(cliente => `<option value="${cliente.id}">${cliente.nombre} ${cliente.apellidoPaterno} ${cliente.apellidoMaterno}</option>`).join('');
+              }
+          };
+  
+          const renderizarCita = (cita, listaId) => {
+            const lista = document.getElementById(listaId);
+            if (lista) {
+                const usuario = cita.Usuario ? `${cita.Usuario.nombre} ${cita.Usuario.apellidoPaterno} ${cita.Usuario.apellidoMaterno}` : 'Desconocido';
+                const cliente = cita.Cliente ? `${cita.Cliente.nombre} ${cita.Cliente.apellidoPaterno} ${cita.Cliente.apellidoMaterno}` : 'Desconocido';
+                const fila = document.createElement('tr');
+                fila.setAttribute('data-id', cita.id);
+                fila.innerHTML = `
+                    <td>${cita.nombre}</td>
+                    <td>${new Date(cita.horaInicio).toLocaleString()} - ${new Date(cita.horaFin).toLocaleString()}</td>
+                    <td>${cita.tipoCita}</td>
+                    <td>${cita.estado}</td>
+                    <td>${usuario}</td>
+                    <td>${cliente}</td>
+                    <td class="text-center">
+                        <ul class="list-inline mb-0">
+                            <li class="list-inline-item" data-bs-toggle="tooltip" title="Ver">
+                                <a href="#" class="avtar avtar-xs btn-link-secondary btn-pc-default detalles-cita" data-id="${cita.id}">
+                                    <i class="ti ti-eye f-18"></i>
+                                </a>
+                            </li>
+                            <li class="list-inline-item" data-bs-toggle="tooltip" title="Editar">
+                                <a href="#" class="avtar avtar-xs btn-link-success btn-pc-default editar-cita" data-id="${cita.id}">
+                                    <i class="ti ti-edit-circle f-18"></i>
+                                </a>
+                            </li>
+                            <li class="list-inline-item" data-bs-toggle="tooltip" title="Eliminar">
+                                <a href="#" class="avtar avtar-xs btn-link-danger btn-pc-default eliminar-cita" data-id="${cita.id}">
+                                    <i class="ti ti-trash f-18"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </td>
+                `;
+                lista.appendChild(fila);
+        
+                fila.querySelectorAll('.detalles-cita').forEach(element => {
+                    element.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        mostrarDetallesCita(cita);
+                    });
+                });
+        
+                fila.querySelector('.editar-cita').addEventListener('click', (e) => {
+                    e.preventDefault();
+                    mostrarEditarCita(cita);
+                });
+        
+                fila.querySelector('.eliminar-cita').addEventListener('click', (e) => {
+                    e.preventDefault();
+                    iziToast.question({
+                        timeout: 20000,
+                        close: false,
+                        overlay: false,
+                        displayMode: 'once',
+                        id: 'question',
+                        title: 'Confirmación',
+                        message: '¿Estás seguro de que deseas eliminar esta cita?',
+                        position: 'center',
+                        buttons: [
+                            ['<button><b>SI</b></button>', function (instance, toast) {
+                                fetch(`/citas/${cita.id}`, { method: 'DELETE' })
+                                    .then(response => {
+                                        if (response.ok) {
+                                            socket.emit('citaEliminada', { id: cita.id });
+                                            fila.remove();
+                                            iziToast.success({
+                                                title: 'Éxito',
+                                                message: 'Cita eliminada correctamente.',
+                                            });
+                                        } else {
+                                            iziToast.error({
+                                                title: 'Error',
+                                                message: 'Error al eliminar la cita.',
+                                            });
+                                        }
+                                    })
+                                    .catch(error => {
+                                        console.error('Error al eliminar la cita:', error);
+                                        iziToast.error({
+                                            title: 'Error',
+                                            message: 'Error al eliminar la cita.',
+                                        });
+                                    });
+                                instance.hide({ transitionOut: 'fadeOut' }, toast, 'button');
+                            }, true],
+                            ['<button>NO</button>', function (instance, toast) {
+                                instance.hide({ transitionOut: 'fadeOut' }, toast, 'button');
+                            }],
+                        ],
+                    });
+                });
+            }
+        };
+        
+  
+          const mostrarDetallesCita = (cita) => {
+              document.getElementById('detalles-cita-nombre').textContent = cita.nombre;
+              document.getElementById('detalles-cita-fecha').textContent = `${new Date(cita.horaInicio).toLocaleString()} - ${new Date(cita.horaFin).toLocaleString()}`;
+              document.getElementById('detalles-cita-tipo').textContent = cita.tipoCita;
+              document.getElementById('detalles-cita-estado').textContent = cita.estado;
+              const usuario = cita.Usuario ? `${cita.Usuario.nombre} ${cita.Usuario.apellidoPaterno} ${cita.Usuario.apellidoMaterno}` : 'Desconocido';
+              document.getElementById('detalles-cita-usuario').textContent = usuario;
+              const cliente = cita.Cliente ? `${cita.Cliente.nombre} ${cita.Cliente.apellidoPaterno} ${cita.Cliente.apellidoMaterno}` : 'Desconocido';
+              document.getElementById('detalles-cita-cliente').textContent = cliente;
+              document.getElementById('detalles-cita-descripcion').textContent = cita.descripcion || '';
+              const detallesCitaModal = new bootstrap.Modal(document.getElementById('modalDetallesCita'));
+              detallesCitaModal.show();
+          };
+  
+          const mostrarEditarCita = (cita) => {
+              cargarUsuariosYClientes();
+              document.getElementById('editar-cita-nombre').value = cita.nombre;
+              document.getElementById('editar-cita-fecha').value = cita.fecha.split('T')[0];
+              document.getElementById('editar-cita-hora-inicio').value = new Date(cita.horaInicio).toISOString().substr(11, 5);
+              document.getElementById('editar-cita-hora-fin').value = new Date(cita.horaFin).toISOString().substr(11, 5);
+              document.getElementById('editar-cita-tipo').value = cita.tipoCita;
+              document.getElementById('editar-cita-estado').value = cita.estado;
+              document.getElementById('editar-cita-usuario').value = cita.usuarioId;
+              document.getElementById('editar-cita-cliente').value = cita.clienteId;
+              document.getElementById('editar-cita-descripcion').value = cita.descripcion || '';
+              document.getElementById('editar-cita-id').value = cita.id;
+              const editarCitaModal = new bootstrap.Modal(document.getElementById('modalEditarCita'));
+              editarCitaModal.show();
+          };
+  
+          const eliminarCita = (id) => {
+              if (confirm('¿Estás seguro de que deseas eliminar esta cita?')) {
+                  fetch(`/citas/${id}`, { method: 'DELETE' })
+                      .then(response => {
+                          if (response.ok) {
+                              const fila = document.querySelector(`tr[data-id="${id}"]`);
+                              if (fila) {
+                                  fila.remove();
+                                  socket.emit('citaEliminada', { id });
+                              }
+                          } else {
+                              alert('Error al eliminar la cita');
+                          }
+                      })
+                      .catch(error => {
+                          console.error('Error al eliminar la cita:', error);
+                      });
+              }
+          };
+  
+          document.getElementById('botonCrearCita').addEventListener('click', () => {
+              const nuevaCita = {
+                  nombre: document.getElementById('crear-cita-nombre').value,
+                  fecha: document.getElementById('crear-cita-fecha').value,
+                  horaInicio: document.getElementById('crear-cita-hora-inicio').value,
+                  horaFin: document.getElementById('crear-cita-hora-fin').value,
+                  tipoCita: document.getElementById('crear-cita-tipo').value,
+                  estado: document.getElementById('crear-cita-estado').value,
+                  usuarioId: document.getElementById('crear-cita-usuario').value,
+                  clienteId: document.getElementById('crear-cita-cliente').value,
+                  descripcion: document.getElementById('crear-cita-descripcion').value
+              };
+  
+              fetch('/citas', {
+                  method: 'POST',
+                  headers: { 'Content-Type': 'application/json' },
+                  body: JSON.stringify(nuevaCita)
+              })
+                  .then(response => response.json())
+                  .then(cita => {
+                      if (cita) {
+                          socket.emit('citaCreada', cita);
+                          renderizarCita(cita, 'lista-citas-hoy');
+                          document.getElementById('formCrearCita').reset();
+                          const crearCitaModal = bootstrap.Modal.getInstance(document.getElementById('modalCrearCita'));
+                          crearCitaModal.hide();
+                      } else {
+                          alert('Error al crear la cita');
+                      }
+                  })
+                  .catch(error => {
+                      console.error('Error al crear la cita:', error);
+                  });
+          });
+  
+          document.getElementById('guardarCambiosEditarCita').addEventListener('click', () => {
+              const id = document.getElementById('editar-cita-id').value;
+              const citaActualizada = {
+                  nombre: document.getElementById('editar-cita-nombre').value,
+                  fecha: document.getElementById('editar-cita-fecha').value,
+                  horaInicio: document.getElementById('editar-cita-hora-inicio').value,
+                  horaFin: document.getElementById('editar-cita-hora-fin').value,
+                  tipoCita: document.getElementById('editar-cita-tipo').value,
+                  estado: document.getElementById('editar-cita-estado').value,
+                  usuarioId: document.getElementById('editar-cita-usuario').value,
+                  clienteId: document.getElementById('editar-cita-cliente').value,
+                  descripcion: document.getElementById('editar-cita-descripcion').value
+              };
+  
+              fetch(`/citas/${id}`, {
+                  method: 'PUT',
+                  headers: { 'Content-Type': 'application/json' },
+                  body: JSON.stringify(citaActualizada)
+              })
+                  .then(response => response.json())
+                  .then(cita => {
+                      if (cita) {
+                          const fila = document.querySelector(`tr[data-id="${id}"]`);
+                          fila.innerHTML = `
+                              <td>${cita.nombre}</td>
+                              <td>${new Date(cita.horaInicio).toLocaleString()} - ${new Date(cita.horaFin).toLocaleString()}</td>
+                              <td>${cita.tipoCita}</td>
+                              <td>${cita.estado}</td>
+                              <td>${cita.Usuario.nombre} ${cita.Usuario.apellidoPaterno} ${cita.Usuario.apellidoMaterno}</td>
+                              <td>${cita.Cliente.nombre} ${cita.Cliente.apellidoPaterno} ${cita.Cliente.apellidoMaterno}</td>
+                              <td class="text-center">
+                                  <button class="btn btn-secondary btn-sm detalles-cita" data-id="${cita.id}">Ver</button>
+                                  <button class="btn btn-primary btn-sm editar-cita" data-id="${cita.id}">Editar</button>
+                                  <button class="btn btn-danger btn-sm eliminar-cita" data-id="${cita.id}">Eliminar</button>
+                              </td>
+                          `;
+                          const editarCitaModal = bootstrap.Modal.getInstance(document.getElementById('modalEditarCita'));
+                          editarCitaModal.hide();
+                      } else {
+                          alert('Error al actualizar la cita');
+                      }
+                  })
+                  .catch(error => {
+                      console.error('Error al actualizar la cita:', error);
+                  });
+          });
+  
+          const limpiarListaCitas = () => {
+              const hoy = document.getElementById('lista-citas-hoy');
+              const semana = document.getElementById('lista-citas-semana');
+              const mes = document.getElementById('lista-citas-mes');
+              if (hoy) hoy.innerHTML = '';
+              if (semana) semana.innerHTML = '';
+              if (mes) mes.innerHTML = '';
+          };
+  
+          const renderizarCitas = (citas) => {
+              limpiarListaCitas();
+              citas.forEach(cita => {
+                  const fechaCita = new Date(cita.fecha);
+                  const hoy = new Date();
+                  if (fechaCita.toDateString() === hoy.toDateString()) {
+                      renderizarCita(cita, 'lista-citas-hoy');
+                  } else if (fechaCita < hoy && fechaCita.getTime() >= hoy.getTime() - (7 * 24 * 60 * 60 * 1000)) {
+                      renderizarCita(cita, 'lista-citas-semana');
+                  } else {
+                      renderizarCita(cita, 'lista-citas-mes');
+                  }
+              });
+          };
+  
+          fetch('/citas')
+              .then(response => response.json())
+              .then(citas => {
+                  renderizarCitas(citas);
+              })
+              .catch(error => {
+                  console.error('Error al cargar las citas:', error);
+              });
+  
+          socket.on('citaCreada', (cita) => {
+              const fechaCita = new Date(cita.fecha);
+              const hoy = new Date();
+              if (fechaCita.toDateString() === hoy.toDateString()) {
+                  renderizarCita(cita, 'lista-citas-hoy');
+              } else if (fechaCita < hoy && fechaCita.getTime() >= hoy.getTime() - (7 * 24 * 60 * 60 * 1000)) {
+                  renderizarCita(cita, 'lista-citas-semana');
+              } else {
+                  renderizarCita(cita, 'lista-citas-mes');
+              }
+          });
+  
+          socket.on('citaActualizada', (cita) => {
+              const fila = document.querySelector(`tr[data-id="${cita.id}"]`);
+              fila.innerHTML = `
+                  <td>${cita.nombre}</td>
+                  <td>${new Date(cita.horaInicio).toLocaleString()} - ${new Date(cita.horaFin).toLocaleString()}</td>
+                  <td>${cita.tipoCita}</td>
+                  <td>${cita.estado}</td>
+                  <td>${cita.Usuario.nombre} ${cita.Usuario.apellidoPaterno} ${cita.Usuario.apellidoMaterno}</td>
+                  <td>${cita.Cliente.nombre} ${cita.Cliente.apellidoPaterno} ${cita.Cliente.apellidoMaterno}</td>
+                  <td class="text-center">
+                      <button class="btn btn-secondary btn-sm detalles-cita" data-id="${cita.id}">Ver</button>
+                      <button class="btn btn-primary btn-sm editar-cita" data-id="${cita.id}">Editar</button>
+                      <button class="btn btn-danger btn-sm eliminar-cita" data-id="${cita.id}">Eliminar</button>
+                  </td>
+              `;
+          });
+  
+          socket.on('citaEliminada', ({ id }) => {
+              const fila = document.querySelector(`tr[data-id="${id}"]`);
+              if (fila) {
+                  fila.remove();
+              }
+          });
+  
+          socket.on('connect', () => {
+              console.log('Conectado al servidor con ID:', socket.id);
+          });
+  
+          socket.on('disconnect', () => {
+              console.log('Desconectado del servidor');
+          });
+  
+          cargarUsuariosYClientes();  // Cargar usuarios y clientes al inicio para que estén disponibles en los selectores
+      });
+    </script> -->
+  
+  
+  
+      
+      
+
+    <script>layout_change_default();</script>
+    <script>layout_theme_contrast_change('false');</script>
+    <script>change_box_container('false');</script>
+    <script>layout_caption_change('true');</script>
+    <script>layout_rtl_change('false');</script>
+    <script>preset_change("preset-9");</script>
+
+
+
+      <!-- [Page Specific JS] start -->
+  <!-- calender js -->
+  <script src="../assets/js/plugins/index.global.min.js"></script>
+  <!-- Sweet Alert -->
+  <script src="../assets/js/plugins/sweetalert2.all.min.js"></script>
+  <script src="../assets/js/pages/calendar.js"></script>
+  <script src="../assets/js/form-handler.js"></script>
+  <!-- [Page Specific JS] end -->
+    
+  </body>
+  <!-- [Body] end -->
+</html>

@@ -66,7 +66,26 @@
       calendarmodal.show();
     },
   });
-  
+  //*esto hace que cada que recuperemos el valor de estado nos devuelva una class de bootstrap
+  function colorItem(estado){
+    var  estado;
+    if(estado== "programada"){
+      estado="success";
+    }
+    if(estado=="cancelada"){
+      estado="danger";
+    }
+    if(estado=="inactiva"){
+      estado="warning";
+    }
+    if(estado=="confirmada"){
+      estado="info";
+    }
+    if(estado=="pendiente"){
+      estado="primary";
+    }
+    return estado;
+  }
   document.addEventListener('DOMContentLoaded', function () {
     // Fetch events from the API
     fetch('/citas') // Reemplaza con la URL de tu API
@@ -90,7 +109,7 @@
             tipo: event.tipoCita,
             userId: event.usuarioId,
             // className: 'event-info'
-            className: 'event-' + event.tipoCita.toLowerCase().replace(' ', '-')
+            className: 'event-' + colorItem(event.estado.toLowerCase().replace(' ', '-'))
           });
         });
         calendar.render();
@@ -157,7 +176,9 @@
       if (!e_date_end == '') {
         end = new Date(e_date_end);
       }
-      calendar.addEvent({
+      console.log(day+end+e_date_start+e_date_end);
+
+     calendar.addEvent({
         title: document.getElementById('pc-e-title').value,
         start: new Date(e_date_start),
         end: end,
@@ -165,7 +186,9 @@
         description: document.getElementById('pc-e-description').value,
         venue: document.getElementById('pc-e-venue').value,
         className: document.getElementById('pc-e-type').value
+        
       });
+      
       if (pc_event_add.getAttribute('data-pc-action') == 'add') {
         Swal.fire({
           customClass: {
@@ -191,6 +214,7 @@
         });
       }
       calendaroffcanvas.hide();
+      console.log(title,start, end, allDay, descripcion, venue)
     });
   }
   

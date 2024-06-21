@@ -127,7 +127,7 @@ router.get('/dev', authMiddleware(), async (req, res) => {
     try {
         const usuario = await Usuario.findByPk(req.session.userId, { include: [Rol] });
         const esAdmin = usuario.Rol.tipo === 'Administrador';
-        res.render('application/dev', { userId: req.session.userId, esAdmin });
+        res.render('application/dev', { userId: req.session.userId, esAdmin, user: req.usuario } );
     } catch (error) {
         res.status(500).json({ message: 'Error al obtener el usuario', error: error.message });
     }
@@ -139,16 +139,16 @@ router.get('/login', (req, res) => {
 
 
 router.get('/prov', (req, res) => {
-    res.render('application/prov');
+    res.render('application/prov', { user: req.usuario });
 });
 
 router.get('/', authMiddleware(['Colaborador', 'Administrador']), (req, res) => {
-    res.render('application/calendar1');
+    res.render('application/calendar1', { user: req.usuario });
 });
 
 
 router.get('/home', authMiddleware(['Colaborador', 'Administrador']), (req, res) => {
-    res.render('application/home');
+    res.render('application/view-cita', { user: req.usuario });
 });
 /* dist\application\ecom_product-list.ejs */
 router.get('/ecom_product-list', (req, res) => {
@@ -246,7 +246,7 @@ router.get('/add-evento', (req, res) => {
 
 // Ruta para servir la vista calendar
 router.get('/calendar', authMiddleware(['Colaborador', 'Administrador']), (req, res) => {
-    res.render('application/calendar');
+    res.render('application/calendar', { user: req.usuario });
 });
 
 // Ruta para servir la vista dashboard
@@ -268,19 +268,19 @@ router.get('/analytics', (req, res) => {
 //     res.render('application/usuarios');  
 // });
 router.get('/pruebas', (req, res) => {
-    res.render('application/pruebas');  
+    res.render('application/pruebas', { user: req.usuario });  
 });
 
 router.get('/msgAuth', (req, res) => {
-    res.render('pages/msgAuth');  
+    res.render('pages/msgAuth', { user: req.usuario });  
 });
 
 router.get('/gestion-clientes', authMiddleware(['Colaborador', 'Administrador']), (req, res) => {
-    res.render('application/clientes');  
+    res.render('application/clientes', { user: req.usuario });  
 });
 
 router.get('/gestion-usuarios',authMiddleware(['Administrador']), (req, res) => {
-    res.render('application/usuarios');  
+    res.render('application/usuarios', { user: req.usuario });  
 });
 
 

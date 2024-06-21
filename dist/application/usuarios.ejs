@@ -3,13 +3,13 @@
 <!-- [Head] start -->
 
 <head>
-  <title>Customer List | Able Pro Dashboard Template</title>
+  <title>Gestión de usuarios</title>
   <!-- [Meta] -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <!-- [Favicon] icon -->
-  <link rel="icon" href="../assets/images/favicon.svg" type="image/x-icon"> <!-- [Font] Family -->
+  <link rel="icon" href="../assets/images/logo-dark.svg" type="image/x-icon"> <!-- [Font] Family -->
 <link rel="stylesheet" href="../assets/fonts/inter/inter.css" id="main-font-link" />
 <!-- [Tabler Icons] https://tablericons.com -->
 <link rel="stylesheet" href="../assets/fonts/tabler-icons.min.css" >
@@ -375,11 +375,11 @@
             </div>
             <div class="form-group">
               <label class="form-label">Teléfono</label>
-              <input id="edit-telefono" type="text" class="form-control" placeholder="Ingrese el teléfono ">
+              <input id="edit-telefono" type="number" class="form-control" placeholder="Ingrese el teléfono ">
             </div>
             <div class="form-group">
               <label class="form-label">Correo electrónico</label>
-              <input id="edit-correoElectronico" type="text" class="form-control" placeholder="Ingrese el correo electrónico">
+              <input id="edit-correoElectronico" type="email" class="form-control" placeholder="Ingrese el correo electrónico">
             </div>
             <div class="form-group">
               <label class="form-label">Contraseña</label>
@@ -656,14 +656,28 @@
 
             console.log(responseData);
 
-            if (responseData) {
+            if (response.ok) {
                 // Mostrar un mensaje de éxito, cerrar el modal, etc.
                 fetchClientes();
-                console.log('Cliente actualizado exitosamente');
-                
-            } else {
+                iziToast.success({
+                  title: 'Éxito',
+                  message: 'Se guardo correctamente',
+                  position: 'topRight'
+                });  
+            } else if (response.status === 404) {
+              iziToast.warning({
+                title: 'Cuidado',
+                message: 'Ese usuario no existe',
+                position: 'topRight'
+              });
+            }  else {
                 // Mostrar un mensaje de error, etc.
-                console.error('Error al guardar el cliente');
+                console.error('Error al actualizar el usuario');
+                iziToast.danger({
+                title: 'Algo salio mal',
+                message: 'No se pudo guardar los datos',
+                position: 'topRight'
+              });
             }
         } catch (error) {
             console.error('Error:', error);
