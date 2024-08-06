@@ -14,6 +14,7 @@
       center: 'title',
       right: 'dayGridMonth,timeGridWeek,timeGridDay,listMonth'
     },
+    locale: 'es',
     themeSystem: 'bootstrap',
     initialDate: new Date(y, m, d),
     slotDuration: '00:10:00',
@@ -25,13 +26,28 @@
     editable: true,
     dayMaxEvents: true,
     handleWindowResize: true,
+    businessHours: [ // specify an array instead
+      {
+        daysOfWeek: [ 1, 2, 3, 4, 5 ], // Monday, Tuesday, Wednesday
+        startTime: '10:00', // 8am
+        endTime: '18:00' // 6pm
+      },
+      {
+        daysOfWeek: [ 6 ], // Thursday, Friday
+        startTime: '10:30', // 10am
+        endTime: '13:00' // 4pm
+      }
+    ],
   
     select: function (info) {
       var sdt = new Date(info.start);
       var edt = new Date(info.end);
+      var horaSelccionadaInicio = (info.startStr);
+      var horaSelccionadaFin = (info.endStr);
       document.getElementById('pc-e-sdate').value = sdt.getFullYear() + '-' + getRound(sdt.getMonth() + 1) + '-' + getRound(sdt.getDate());
       document.getElementById('pc-e-edate').value = edt.getFullYear() + '-' + getRound(edt.getMonth() + 1) + '-' + getRound(edt.getDate());
       calendaroffcanvas.show();
+      alert('selected ' + horaSelccionadaInicio + ' to ' + horaSelccionadaFin);
       calendar.unselect();
     },
   
@@ -50,7 +66,7 @@
       // var time_end = clickedevent.end ? timeformat(clickedevent.end) : '';//fechaHoraInicio
       var e_venue = clickedevent.extendedProps.venue || '';//lugar
       var e_tipo = clickedevent.extendedProps.tipo || '';//tipo
-    
+      var e_contacto = clickedevent.extendedProps.contacto || '';
       document.querySelector('.calendar-modal-title').innerHTML = e_title;
       document.querySelector('.pc-event-title').innerHTML = e_title;
       document.querySelector('.pc-event-description').innerHTML = e_desc;
@@ -61,6 +77,7 @@
       document.querySelector('.pc-event-enlace').innerHTML = e_link;
       document.querySelector('.pc-event-estado').innerHTML = e_est;
       document.querySelector('.pc-event-tipo').innerHTML = e_tipo;
+      document.querySelector('.pc-event-telefono').innerHTML = e_contacto;
       // document.querySelector('.pc-event-horaInicio').innerHTML = time_start;
       // document.querySelector('.pc-event-HoraFin').innerHTML = time_end;
       calendarmodal.show();
@@ -70,6 +87,9 @@
   function colorItem(estado){
     var  estado;
     if(estado== "programada"){
+      estado="success";
+    }
+    if(estado== "completada"){
       estado="success";
     }
     if(estado=="cancelada"){
@@ -82,7 +102,7 @@
       estado="info";
     }
     if(estado=="pendiente"){
-      estado="primary";
+      estado="warning";
     }
     return estado;
   }
@@ -107,6 +127,7 @@
             venue: event.lugar,
             title: event.nombre,
             tipo: event.tipoCita,
+            contacto: event.Cliente.telefono,
             userId: event.usuarioId,
             // className: 'event-info'
             className: 'event-' + colorItem(event.estado.toLowerCase().replace(' ', '-'))
@@ -176,7 +197,7 @@
       if (!e_date_end == '') {
         end = new Date(e_date_end);
       }
-      console.log(day+end+e_date_start+e_date_end);
+      console.log(day+end+e_date_start+e_date_end, end);
 
      calendar.addEvent({
         title: document.getElementById('pc-e-title').value,

@@ -197,6 +197,7 @@
             <div class="flex-grow-1 ms-3">
               <h5 class="mb-1"><b>Cliente</b></h5>
               <p class="pc-event-cliente text-muted"></p>
+              <p id="contacto" class="pc-event-telefono text-muted"></p>
             </div>
           </div>
           <div class="d-flex">
@@ -268,17 +269,16 @@
         </div>
         <div class="modal-footer justify-content-between">
           <ul class="list-inline me-auto mb-0">
-            <li class="list-inline-item align-bottom">
+            <!-- <li class="list-inline-item align-bottom">
               <a href="#" id="pc_event_remove" class="avtar avtar-s btn-link-danger btn-pc-default w-sm-auto" data-bs-toggle="tooltip"
                 title="Delete">
                 <i class="ti ti-trash f-18"></i>
               </a>
-            </li>
+            </li> -->
             <li class="list-inline-item align-bottom">
-              <a href="#" id="pc_event_edit" class="avtar avtar-s btn-link-success btn-pc-default" data-bs-toggle="tooltip"
-                title="Edit">
-                <i class="ti ti-edit-circle f-18"></i>
-              </a>
+              <button href="#" id="send_message" class="btn-link-success">
+                <i class="fab fa-whatsapp"></i> Compartir al cliente
+              </button>
             </li>
           </ul>
           <div class="flex-grow-1 text-end">
@@ -349,7 +349,28 @@
 <script src="../assets/js/pcoded.js"></script>
 <script src="../assets/js/plugins/feather.min.js"></script>
 
+<script>
+  document.getElementById('send_message').addEventListener('click', function() {
+    var nombre = document.querySelector('.pc-event-cliente').textContent.trim();
+    var Ubicacion = document.querySelector('.pc-event-venue').textContent.trim();
+    var Fecha = document.querySelector('.pc-event-date').textContent.trim();
+    var tipo = document.querySelector('.pc-event-tipo').textContent.trim();
+    var enlace = document.querySelector('.pc-event-enlace').textContent.trim();
+    var telefono = document.getElementById('contacto').textContent.trim();
 
+    var message = "Hola " + nombre + ", " +
+                  "Buen día estos son los datos de tu cita:  " +
+                  "Ubicación: " + Ubicacion + ",  " +
+                  "Fecha: " + Fecha + ",  " +
+                  "Tipo: " + tipo + ",  " +
+                  "Nos vemos en: " + enlace + ",  " + "Te esperamos en D-Conta & Fiscal+";
+
+    var url = "whatsapp://send?text=" + encodeURIComponent(message) + "&phone=" + encodeURIComponent(telefono);
+
+    console.log(telefono, message);
+    window.open(url);
+});
+</script>
 
 
 

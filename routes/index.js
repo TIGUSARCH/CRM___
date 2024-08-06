@@ -142,106 +142,15 @@ router.get('/prov', (req, res) => {
     res.render('application/prov', { user: req.usuario });
 });
 
-router.get('/', authMiddleware(['Colaborador', 'Administrador']), (req, res) => {
+router.get('/',
+     authMiddleware(['Colaborador', 'Administrador']),
+      (req, res) => {
     res.render('application/calendar1', { user: req.usuario });
 });
 
 
 router.get('/home', authMiddleware(['Colaborador', 'Administrador']), (req, res) => {
     res.render('application/view-cita', { user: req.usuario });
-});
-/* dist\application\ecom_product-list.ejs */
-router.get('/ecom_product-list', (req, res) => {
-    res.render('application/ecom_product-list');
-});
-
-router.get('/ecom_product-add', (req, res) => {
-    res.render('application/ecom_product-add');
-});
-
-/* Forms_Elements */
-router.get('/form_elements', (req, res) => {
-    res.render('forms/form_elements');
-});
-
-router.get('/form_floating', (req, res) => {
-    res.render('forms/form_floating');
-});
-
-router.get('/form2_basic', (req, res) => {
-    res.render('forms/form2_basic');
-});
-
-router.get('/form2_input_group', (req, res) => {
-    res.render('forms/form2_input_group');
-});
-
-router.get('/form2_checkbox', (req, res) => {
-    res.render('forms/form2_checkbox');
-});
-
-router.get('/form2_radio', (req, res) => {
-    res.render('forms/form2_radio');
-});
-
-router.get('/form2_switch', (req, res) => {
-    res.render('forms/form2_switch');
-});
-
-router.get('/form2_megaoption', (req, res) => {
-    res.render('forms/form2_megaoption');
-});
-/* End_Forms_Elements */
-
-
-/* Forms_Plugins */
-router.get('/form2_datepicker', (req, res) => {
-    res.render('forms/form2_datepicker');
-});
-
-router.get('/form2_daterangepicker', (req, res) => {
-    res.render('forms/form2_daterangepicker');
-});
-
-router.get('/form2_timepicker', (req, res) => {
-    res.render('forms/form2_timepicker');
-});
-
-router.get('/form2_choices', (req, res) => {
-    res.render('forms/form2_choices');
-});
-
-router.get('/form2_recaptcha', (req, res) => {
-    res.render('forms/form2_recaptcha');
-});
-
-router.get('/form2_inputmask', (req, res) => {
-    res.render('forms/form2_inputmask');
-});
-
-router.get('/form2_clipboard', (req, res) => {
-    res.render('forms/form2_clipboard');
-});
-
-router.get('/form2_nouislider', (req, res) => {
-    res.render('forms/form2_nouislider');
-});
-
-router.get('/form2_switchjs', (req, res) => {
-    res.render('forms/form2_switchjs');
-});
-
-router.get('/form2_typeahead', (req, res) => {
-    res.render('forms/form2_typeahead');
-});
-/* End_Forms_Plugins */
-router.get('/form2_typeahead', (req, res) => {
-    res.render('forms/form2_typeahead');
-});
-
-/* Rutas para los formularios en donde agregaremos los eventos */
-router.get('/add-evento', (req, res) => {
-    res.render('forms/add-evento');
 });
 
 // Ruta para servir la vista calendar
